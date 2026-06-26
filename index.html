@@ -286,12 +286,45 @@
             filter: blur(0);
         }
 
-        @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            h2 { font-size: 2rem; }
-            .glass-panel { padding: 2.5rem 1.5rem; }
-            .icon-nav { right: 1rem; }
-            .gallery-grid { grid-template-columns: 1fr; }
+{/* Ajustes para Móviles (Responsive) */
+@media (max-width: 768px) {
+    /* Menú más compacto */
+    .icon-nav {
+        right: 0.5rem;
+        gap: 0.8rem;
+    }
+    
+    .icon-nav a {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    /* Ocultar tooltips en móvil para ganar espacio */
+    .icon-nav a::after {
+        display: none;
+    }
+
+    /* Ajuste del contenido */
+    .glass-panel {
+        padding: 2rem 1rem;
+        margin-right: 3rem; /* Espacio para los iconos */
+    }
+
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.6rem; }
+    p { font-size: 1rem; }
+
+    /* Logos en formato más compacto */
+    .logo-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en vez de 1 */
+        gap: 1rem;
+    }
+    
+    .logo-grid img {
+        max-width: 80px; /* Logos más pequeños */
+    }
+}
         }
     </style>
 </head>
