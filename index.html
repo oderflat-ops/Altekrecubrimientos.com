@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Altek | Soluciones Integrales de Innovación</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #030307;
+            --primary-glow: #00f3ff;
+            --secondary-glow: #0051ff;
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.06);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Lienzo del Fondo Animado */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Contenedor de contenido por encima del canvas */
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navegación Futurista por Iconos - ACTUALIZADA */
+        .icon-nav {
+            position: fixed;
+            top: 50%;
+            right: 2rem;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 1000;
+        }
+
+        .icon-nav a {
+            color: var(--text-muted);
+            font-size: 1.4rem;
+            width: 55px;
+            height: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        .icon-nav a:hover, .icon-nav a.active {
+            color: var(--primary-glow);
+            box-shadow: 0 0 25px var(--primary-glow), inset 0 0 10px var(--primary-glow);
+            border-color: var(--primary-glow);
+            transform: scale(1.15);
+        }
+
+        /* Tooltip de los iconos */
+        .icon-nav a::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: 135%;
+            background: rgba(3, 3, 7, 0.9);
+            color: var(--primary-glow);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+
+        .icon-nav a:hover::after {
+            opacity: 1;
+            right: 125%;
+        }
+
+        /* Secciones y Layout */
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 10%;
+            position: relative;
+        }
+
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 4.5rem;
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Tipografía */
+        h1 {
+            font-size: 4.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #ffffff, var(--primary-glow), var(--secondary-glow));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 5s linear infinite;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-glow);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        h2 i {
+            margin-right: 10px;
+            text-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        /* Botón Interactivo */
+        .btn-glow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1.1rem 3.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--bg-color);
+            background: linear-gradient(45deg, var(--primary-glow), #00ffaa);
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+        }
+
+        .btn-glow:hover {
+            box-shadow: 0 0 35px var(--primary-glow), 0 0 60px rgba(0, 243, 255, 0.3);
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        /* --- NUEVOS ESTILOS PARA GALERÍA Y LOGOS --- */
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(0deg, rgba(3, 3, 7, 0.9) 0%, rgba(3, 3, 7, 0) 100%);
+            color: var(--text-main);
+            text-align: left;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-card:hover .card-overlay {
+            opacity: 1;
+        }
+
+        .card-overlay h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-glow);
+        }
+
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 3rem;
+            align-items: center;
+            justify-items: center;
+            margin-top: 3rem;
+        }
+
+        .logo-grid img {
+            max-width: 120px;
+            height: auto;
+            filter: grayscale(100%) brightness(150%) contrast(80%);
+            opacity: 0.6;
+            transition: all 0.5s ease;
+        }
+
+        .logo-grid img:hover {
+            filter: grayscale(0%) brightness(100%) contrast(100%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* --- FIN DE NUEVOS ESTILOS --- */
+
+        /* Animación de brillo de texto */
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Animaciones al hacer Scroll */
+        .hidden {
+            opacity: 0;
+            transform: translateY(60px) scale(0.95);
+            filter: blur(10px);
+        }
+        .show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2rem; }
+            .glass-panel { padding: 2.5rem 1.5rem; }
+            .icon-nav { right: 1rem; }
+            .gallery-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="content-wrapper">
+
+        <nav class="icon-nav">
+            <a href="#inicio" data-tooltip="Inicio" class="active"><i class="fa-solid fa-house"></i></a>
+            <a href="#epoxicos" data-tooltip="Recubrimientos Epóxicos"><i class="fa-solid fa-layer-group"></i></a>
+            <a href="#poliuretano" data-tooltip="Sistemas de Poliuretano"><i class="fa-solid fa-shield-halved"></i></a>
+            <a href="#galeria" data-tooltip="Galería de Innovación"><i class="fa-solid fa-camera-retro"></i></a>
+            <a href="#logos" data-tooltip="Socios Estratégicos"><i class="fa-solid fa-network-wired"></i></a>
+            <a href="#contacto" data-tooltip="Contacto Securizado"><i class="fa-solid fa-satellite-dish"></i></a>
+        </nav>
+
+        <section id="inicio">
+            <div class="glass-panel hidden">
+                <h1>ALTEK</h1>
+                <p>El futuro de las superficies industriales. Soluciones integrales de alta ingeniería que transforman, protegen y evolucionan tu infraestructura operativa con una estética de vanguardia.</p>
+                <a href="#contacto" class="btn-glow">Iniciar Proyecto <i class="fa-solid fa-terminal"></i></a>
+            </div>
+        </section>
+
+        <section id="epoxicos">
+            <div class="glass-panel hidden">
+                <h2><i class="fa-solid fa-layer-group"></i> Tecnología Epóxica</h2>
+                <p>Resistencia extrema para entornos críticos. Nuestros recubrimientos epóxicos monolíticos son impenetrables ante químicos, impacto severo y tráfico pesado continuos.</p>
+            </div>
+        </section>
+
+        <section id="poliuretano">
+            <div class="glass-panel hidden">
+                <h2><i class="fa-solid fa-shield-halved"></i> Escudos de Poliuretano</h2>
+                <p>Flexibilidad térmica y estabilidad UV certificadas. Sistemas de aislamiento y recubrimiento molecular diseñados para soportar los choques térmicos más radicales en infraestructuras críticas.</p>
+            </div>
+        </section>
+
+        <section id="galeria">
+            <div class="glass-panel hidden">
+                <h2><i class="fa-solid fa-camera-retro"></i> Galería de Innovación Operativa</h2>
+                <p>Explore nuestros proyectos destacados: donde la ciencia de los materiales se encuentra con la excelencia industrial para crear entornos de alto rendimiento.</p>
+                <div class="gallery-grid">
+                    <div class="gallery-card">
+                        <img src="image_3.png" alt="Pista de Autobuses">
+                        <div class="card-overlay"><h4>Pista de Autobuses de Alta Resistencia</h4></div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="image_4.png" alt="Zona de Carga">
+                        <div class="card-overlay"><h4>Zona de Carga Monolítica</h4></div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="image_0.png" alt="Instalaciones de Almacenamiento">
+                        <div class="card-overlay"><h4>Instalaciones de Almacenamiento Crítico</h4></div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="image_5.png" alt="Entorno de Fabricación">
+                        <div class="card-overlay"><h4>Entorno de Fabricación de Alta Precisión</h4></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="logos">
+            <div class="glass-panel hidden">
+                <h2><i class="fa-solid fa-network-wired"></i> Socio Estratégico de Industrias Líderes</h2>
+                <p>Empresas globales que confían sus entornos más exigentes a las soluciones tecnológicas de ALTEK. Nuestra ingeniería es la base de su éxito operativo.</p>
+                <div class="logo-grid">
+                    <img src="Mercedes.png" alt="Mercedes-Benz Logo">
+                    <img src="Mazda.png" alt="Mazda Logo">
+                    <img src="Coca.png" alt="Coca-Cola FEMSA Logo">
+                    <img src="Honda.png" alt="Honda Logo">
+                    <img src="Comex.png" alt="Comex Logo">
+                    <img src="Alpura.png" alt="Alpura Logo">
+                    <img src="Novartis.png" alt="Novartis Logo">
+                    <img src="Banorte.png" alt="Banorte Logo">
+                    <img src="Azteca.png" alt="TV Azteca Logo">
+                    <img src="Accel.png" alt="Accel Logo">
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <div class="glass-panel hidden">
+                <h2>Conexión Segura</h2>
+                <p>¿Listo para actualizar los estándares de infraestructura operativa de sus instalaciones críticas? Establezca contacto inmediato con nuestro equipo de ingeniería avanzada.</p>
+                <a href="mailto:oderfla.t@gmail.com" class="btn-glow"><i class="fa-regular fa-envelope"></i> Enviar Transmisión</a>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // --- LOGICA DEL FONDO ANIMADO (CANVAS NEURAL NET) ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const particleCount = 75; // Cantidad balanceada para rendimiento óptimo
+        const connectionDistance = 110; // Distancia máxima para enlazar nodos
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.4; // Movimiento sutil y elegante
+                this.vy = (Math.random() - 0.5) * 0.4;
+                this.radius = Math.random() * 2 + 1;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Rebotar sutilmente en los bordes de la pantalla
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(0, 243, 255, 0.4)';
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Dibujar fondo degradado radial estático de apoyo
+            let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 10, canvas.width/2, canvas.height/2, canvas.width);
+            gradient.addColorStop(0, '#0d1127');
+            gradient.addColorStop(1, '#030307');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Actualizar y dibujar partículas
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            // Trazar las conexiones de la red
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        // La opacidad depende de la cercanía entre nodos
+                        let alpha = (1 - (distance / connectionDistance)) * 0.18;
+                        ctx.strokeStyle = `rgba(0, 243, 255, ${alpha})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        
+        initParticles();
+        animateParticles();
+
+
+        // --- LOGICA DE ANIMACIÓN AL HACER SCROLL (INTERSECTION OBSERVER) ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        const hiddenElements = document.querySelectorAll('.hidden');
+        hiddenElements.forEach((el) => observer.observe(el));
+
+
+        // --- DETECTAR SECCIÓN ACTIVA EN EL MENÚ DE ICONOS ---
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.icon-nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').includes(current)) {
+                    a.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
