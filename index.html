@@ -14,6 +14,7 @@
             --glass-border: rgba(255, 255, 255, 0.06);
             --text-main: #ffffff;
             --text-muted: #94a3b8;
+            --wp-color: #25D366;
         }
 
         * {
@@ -41,37 +42,40 @@
             pointer-events: none;
         }
 
-        /* Contenedor de contenido por encima del canvas */
         .content-wrapper {
             position: relative;
             z-index: 2;
         }
 
-        /* Navegación Futurista por Iconos - ACTUALIZADA */
+        /* --- NAVEGACIÓN SUPERIOR B2B (ACTUALIZADA) --- */
         .icon-nav {
             position: fixed;
-            top: 50%;
-            right: 2rem;
-            transform: translateY(-50%);
+            top: 0;
+            left: 0;
+            width: 100%;
             display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+            justify-content: center;
+            gap: 2rem;
             z-index: 1000;
+            padding: 1rem 0;
+            background: rgba(3, 3, 7, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
 
         .icon-nav a {
             color: var(--text-muted);
             font-size: 1.4rem;
-            width: 55px;
-            height: 55px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--glass-border);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             text-decoration: none;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
@@ -79,17 +83,19 @@
 
         .icon-nav a:hover, .icon-nav a.active {
             color: var(--primary-glow);
-            box-shadow: 0 0 25px var(--primary-glow), inset 0 0 10px var(--primary-glow);
+            box-shadow: 0 0 20px var(--primary-glow), inset 0 0 10px var(--primary-glow);
             border-color: var(--primary-glow);
-            transform: scale(1.15);
+            transform: translateY(-3px) scale(1.1);
         }
 
-        /* Tooltip de los iconos */
+        /* Tooltip ajustado para mostrarse abajo */
         .icon-nav a::after {
             content: attr(data-tooltip);
             position: absolute;
-            right: 135%;
-            background: rgba(3, 3, 7, 0.9);
+            top: 135%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(3, 3, 7, 0.95);
             color: var(--primary-glow);
             padding: 0.6rem 1.2rem;
             border-radius: 8px;
@@ -105,7 +111,7 @@
 
         .icon-nav a:hover::after {
             opacity: 1;
-            right: 125%;
+            top: 120%;
         }
 
         /* Secciones y Layout */
@@ -114,7 +120,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 4rem 10%;
+            padding: 7rem 10% 4rem 10%; /* Padding top extra para que no lo tape la barra superior */
             position: relative;
         }
 
@@ -166,12 +172,21 @@
             font-weight: 300;
         }
 
-        /* Botón Interactivo */
+        /* --- CONTENEDOR Y BOTONES B2B --- */
+        .btn-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
         .btn-glow {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 1.1rem 3.5rem;
+            padding: 1.1rem 2.5rem;
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--bg-color);
@@ -191,8 +206,32 @@
             transform: translateY(-4px) scale(1.02);
         }
 
-        /* --- NUEVOS ESTILOS PARA GALERÍA Y LOGOS --- */
-        
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1.1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            background: transparent;
+            border: 2px solid var(--wp-color);
+            border-radius: 40px;
+            cursor: pointer;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.4s ease;
+        }
+
+        .btn-outline:hover {
+            background: rgba(37, 211, 102, 0.1);
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+            transform: translateY(-4px) scale(1.02);
+            border-color: #2ee672;
+        }
+
+        /* Galería y Logos */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -267,14 +306,10 @@
             transform: scale(1.1);
         }
 
-        /* --- FIN DE NUEVOS ESTILOS --- */
-
-        /* Animación de brillo de texto */
         @keyframes shine {
             to { background-position: 200% center; }
         }
 
-        /* Animaciones al hacer Scroll */
         .hidden {
             opacity: 0;
             transform: translateY(60px) scale(0.95);
@@ -286,12 +321,32 @@
             filter: blur(0);
         }
 
+        /* --- OPTIMIZACIÓN RESPONSIVA MÓVIL --- */
         @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
+            h1 { font-size: 2.8rem; }
             h2 { font-size: 2rem; }
+            section { padding: 6rem 5% 3rem 5%; }
             .glass-panel { padding: 2.5rem 1.5rem; }
-            .icon-nav { right: 1rem; }
-            .gallery-grid { grid-template-columns: 1fr; }
+            
+            /* Ajustes finos al menú superior en celular */
+            .icon-nav {
+                gap: 0.8rem;
+                padding: 0.8rem 0;
+            }
+            .icon-nav a {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            /* Ocultar tooltips en móvil para evitar bugs visuales al tocar */
+            .icon-nav a::after {
+                display: none;
+            }
+            
+	    /* CAMBIO A 2 COLUMNAS */
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+            .btn-container { flex-direction: column; width: 100%; }
+            .btn-glow, .btn-outline { width: 100%; justify-content: center; }
         }
     </style>
 </head>
@@ -301,20 +356,28 @@
 
     <div class="content-wrapper">
 
+        <!-- NAVEGACIÓN SUPERIOR FIJA -->
         <nav class="icon-nav">
             <a href="#inicio" data-tooltip="Inicio" class="active"><i class="fa-solid fa-house"></i></a>
             <a href="#epoxicos" data-tooltip="Recubrimientos Epóxicos"><i class="fa-solid fa-layer-group"></i></a>
             <a href="#poliuretano" data-tooltip="Sistemas de Poliuretano"><i class="fa-solid fa-shield-halved"></i></a>
             <a href="#galeria" data-tooltip="Galería de Innovación"><i class="fa-solid fa-camera-retro"></i></a>
             <a href="#logos" data-tooltip="Socios Estratégicos"><i class="fa-solid fa-network-wired"></i></a>
-            <a href="#contacto" data-tooltip="Contacto"><i class="fa-solid fa-satellite-dish"></i></a>
+            <a href="#contacto" data-tooltip="Contacto Seguro"><i class="fa-solid fa-satellite-dish"></i></a>
         </nav>
 
         <section id="inicio">
             <div class="glass-panel hidden">
                 <h1>ALTEK</h1>
                 <p>El futuro de las superficies industriales. Soluciones integrales de alta ingeniería que transforman, protegen y evolucionan tu infraestructura operativa con una estética de vanguardia.</p>
-                <a href="#contacto" class="btn-glow">Iniciar Proyecto <i class="fa-solid fa-terminal"></i></a>
+                <div class="btn-container">
+                    <a href="https://calendly.com/oderfla-t/30min" target="_blank" rel="noopener noreferrer" class="btn-glow">
+                        <i class="fa-regular fa-calendar-check"></i> Agendar Diagnóstico
+                    </a>
+                    <a href="https://wa.me/525535820734?text=Hola,%20vengo%20de%20la%20página%20web%20y%20me%20interesa%20evaluar%20un%20proyecto%20de%20piso%20industrial." target="_blank" rel="noopener noreferrer" class="btn-outline">
+                        <i class="fa-brands fa-whatsapp"></i> Chat Rápido
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -378,21 +441,27 @@
 
         <section id="contacto">
             <div class="glass-panel hidden">
-                <h2>Conexión Segura</h2>
-                <p>¿Listo para actualizar los estándares de infraestructura operativa de sus instalaciones críticas? Establezca contacto inmediato con nuestro equipo de ingeniería avanzada.</p>
-                <a href="mailto:oderfla.t@gmail.com" class="btn-glow"><i class="fa-regular fa-envelope"></i> Enviar Transmisión</a>
+                <h2>Evaluación Técnica Inmediata</h2>
+                <p>Evite paros operativos o no conformidades ante la NOM-251. Conecte con nuestro equipo para programar un diagnóstico estructural sin costo en su planta.</p>
+                <div class="btn-container">
+                    <a href="https://calendly.com/oderfla-t/30min" target="_blank" rel="noopener noreferrer" class="btn-glow">
+                        <i class="fa-regular fa-calendar-check"></i> Agendar Visita Técnica
+                    </a>
+                    <a href="https://wa.me/525535820734?text=Hola,%20me%20gustaría%20resolver%20algunas%20dudas%20técnicas%20sobre%20recubrimientos." target="_blank" rel="noopener noreferrer" class="btn-outline">
+                        <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
+                    </a>
+                </div>
             </div>
         </section>
 
     </div>
 
     <script>
-        // --- LOGICA DEL FONDO ANIMADO (CANVAS NEURAL NET) ---
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const particleCount = 75; // Cantidad balanceada para rendimiento óptimo
-        const connectionDistance = 110; // Distancia máxima para enlazar nodos
+        const particleCount = 75; 
+        const connectionDistance = 110; 
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
@@ -408,7 +477,7 @@
             reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.4; // Movimiento sutil y elegante
+                this.vx = (Math.random() - 0.5) * 0.4; 
                 this.vy = (Math.random() - 0.5) * 0.4;
                 this.radius = Math.random() * 2 + 1;
             }
@@ -416,7 +485,6 @@
                 this.x += this.vx;
                 this.y += this.vy;
 
-                // Rebotar sutilmente en los bordes de la pantalla
                 if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
                 if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
             }
@@ -438,20 +506,17 @@
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Dibujar fondo degradado radial estático de apoyo
             let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 10, canvas.width/2, canvas.height/2, canvas.width);
             gradient.addColorStop(0, '#0d1127');
             gradient.addColorStop(1, '#030307');
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Actualizar y dibujar partículas
             particles.forEach(p => {
                 p.update();
                 p.draw();
             });
 
-            // Trazar las conexiones de la red
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
@@ -462,7 +527,6 @@
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
-                        // La opacidad depende de la cercanía entre nodos
                         let alpha = (1 - (distance / connectionDistance)) * 0.18;
                         ctx.strokeStyle = `rgba(0, 243, 255, ${alpha})`;
                         ctx.lineWidth = 0.8;
@@ -476,8 +540,6 @@
         initParticles();
         animateParticles();
 
-
-        // --- LOGICA DE ANIMACIÓN AL HACER SCROLL (INTERSECTION OBSERVER) ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -489,8 +551,6 @@
         const hiddenElements = document.querySelectorAll('.hidden');
         hiddenElements.forEach((el) => observer.observe(el));
 
-
-        // --- DETECTAR SECCIÓN ACTIVA EN EL MENÚ DE ICONOS ---
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.icon-nav a');
 
