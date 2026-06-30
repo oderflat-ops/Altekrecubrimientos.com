@@ -321,7 +321,7 @@
             filter: blur(0);
         }
 
-        /* --- OPTIMIZACIÓN RESPONSIVA MÓVIL --- */
+       /* --- OPTIMIZACIÓN RESPONSIVA MÓVIL --- */
         @media (max-width: 768px) {
             h1 { font-size: 2.8rem; }
             h2 { font-size: 2rem; }
@@ -343,11 +343,29 @@
                 display: none;
             }
             
-	    /* CAMBIO A 2 COLUMNAS */
+            /* Ajuste para 2 columnas en galería */
             .gallery-grid { grid-template-columns: repeat(2, 1fr); }
             .btn-container { flex-direction: column; width: 100%; }
             .btn-glow, .btn-outline { width: 100%; justify-content: center; }
+
+            /* Ajuste de Fuerza Bruta para 2 columnas exactas */
+        .logo-grid { 
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important; /* 2 fracciones idénticas */
+            gap: 10px !important;
+            width: 100% !important;
+            padding: 0 !important;
         }
+
+        .logo-grid img {
+            width: 100% !important; 
+            max-width: 110px !important; 
+            height: auto !important;
+            object-fit: contain !important; /* Obliga a la imagen a caber sin deformarse */
+            margin: 0 auto !important;
+        }
+        }
+        
     </style>
 </head>
 <body>
