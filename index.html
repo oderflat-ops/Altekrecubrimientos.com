@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Altek | Soluciones Integrales de Innovación</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src https://cdnjs.cloudflare.com; img-src 'self' data:; script-src 'self' 'unsafe-inline'; connect-src 'self';">
+    <title>ALTEK | Recubrimientos Industriales que Prolongan la Vida Útil de su Infraestructura</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
             --bg-color: #030307;
@@ -17,456 +18,252 @@
             --wp-color: #25D366;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            overflow-x: hidden;
-        }
+        body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Segoe UI', Helvetica, sans-serif; overflow-x: hidden; padding-bottom: 0; }
 
         /* Lienzo del Fondo Animado */
-        #bg-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-            pointer-events: none;
+        #bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none; }
+        .content-wrapper { position: relative; z-index: 2; }
+
+        /* --- NAVEGACIÓN SUPERIOR BASE --- */
+        .icon-nav { 
+            position: fixed; top: 0; left: 0; width: 100%; display: flex; 
+            justify-content: center; gap: 1.5rem; z-index: 1000; 
+            padding: 1rem 0; background: rgba(3, 3, 7, 0.95); 
+            backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border); 
         }
 
-        .content-wrapper {
-            position: relative;
-            z-index: 2;
+        .icon-nav a { 
+            color: var(--text-muted); display: flex; flex-direction: column; 
+            align-items: center; gap: 8px; text-decoration: none; 
+            transition: 0.3s; font-size: 0.8rem; font-weight: 500; 
         }
 
-        /* --- NAVEGACIÓN SUPERIOR B2B (ACTUALIZADA) --- */
-        .icon-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            z-index: 1000;
-            padding: 1rem 0;
-            background: rgba(3, 3, 7, 0.85);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--glass-border);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        .icon-nav a i { 
+            font-size: 1.4rem; width: 40px; height: 40px; 
+            display: flex; align-items: center; justify-content: center; 
+            border-radius: 50%; background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid var(--glass-border); transition: 0.3s; 
         }
 
-        .icon-nav a {
-            color: var(--text-muted);
-            font-size: 1.4rem;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--glass-border);
-            text-decoration: none;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-        }
-
-        .icon-nav a:hover, .icon-nav a.active {
-            color: var(--primary-glow);
-            box-shadow: 0 0 20px var(--primary-glow), inset 0 0 10px var(--primary-glow);
-            border-color: var(--primary-glow);
-            transform: translateY(-3px) scale(1.1);
-        }
-
-        /* Tooltip ajustado para mostrarse abajo */
-        .icon-nav a::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            top: 135%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(3, 3, 7, 0.95);
-            color: var(--primary-glow);
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 243, 255, 0.3);
-            white-space: nowrap;
-            letter-spacing: 0.5px;
-        }
-
-        .icon-nav a:hover::after {
-            opacity: 1;
-            top: 120%;
-        }
+        .icon-nav a:hover, .icon-nav a.active { color: var(--primary-glow); }
+        .icon-nav a:hover i, .icon-nav a.active i { box-shadow: 0 0 15px var(--primary-glow); border-color: var(--primary-glow); transform: translateY(-3px) scale(1.1); }
 
         /* Secciones y Layout */
-        section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 7rem 10% 4rem 10%; /* Padding top extra para que no lo tape la barra superior */
-            position: relative;
-        }
-
-        .glass-panel {
-            background: var(--glass-bg);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 4.5rem;
-            max-width: 900px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
-            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-        }
+        section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 8rem 10% 4rem 10%; position: relative; }
+        .glass-panel { background: var(--glass-bg); backdrop-filter: blur(25px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 4.5rem; max-width: 900px; width: 100%; text-align: center; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6); transition: all 0.8s ease; }
 
         /* Tipografía */
-        h1 {
-            font-size: 4.5rem;
-            letter-spacing: 4px;
-            margin-bottom: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(90deg, #ffffff, var(--primary-glow), var(--secondary-glow));
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 5s linear infinite;
-        }
+        h1 { font-size: 2.8rem; letter-spacing: 1px; line-height: 1.2; margin-bottom: 1.5rem; font-weight: 800; background: linear-gradient(90deg, #ffffff, var(--primary-glow), var(--secondary-glow)); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine 5s linear infinite; }
+        h2 { font-size: 2.2rem; margin-bottom: 1.5rem; color: var(--primary-glow); font-weight: 600; }
+        p { font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300; }
 
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-glow);
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        h2 i {
-            margin-right: 10px;
-            text-shadow: 0 0 15px var(--primary-glow);
-        }
-
-        p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-        }
-
-        /* --- CONTENEDOR Y BOTONES B2B --- */
-        .btn-container {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-        }
-
-        .btn-glow {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 1.1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--bg-color);
-            background: linear-gradient(45deg, var(--primary-glow), #00ffaa);
-            border: none;
-            border-radius: 40px;
-            cursor: pointer;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.4s ease;
-            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
-        }
-
-        .btn-glow:hover {
-            box-shadow: 0 0 35px var(--primary-glow), 0 0 60px rgba(0, 243, 255, 0.3);
-            transform: translateY(-4px) scale(1.02);
-        }
-
-        .btn-outline {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 1.1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-main);
-            background: transparent;
-            border: 2px solid var(--wp-color);
-            border-radius: 40px;
-            cursor: pointer;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.4s ease;
-        }
-
-        .btn-outline:hover {
-            background: rgba(37, 211, 102, 0.1);
-            box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
-            transform: translateY(-4px) scale(1.02);
-            border-color: #2ee672;
-        }
-
-        /* Galería y Logos */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .gallery-card {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            transition: all 0.4s ease;
-            backdrop-filter: blur(8px);
-        }
-
-        .gallery-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-card:hover img {
-            transform: scale(1.08);
-        }
-
-        .card-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem;
-            background: linear-gradient(0deg, rgba(3, 3, 7, 0.9) 0%, rgba(3, 3, 7, 0) 100%);
-            color: var(--text-main);
-            text-align: left;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .gallery-card:hover .card-overlay {
-            opacity: 1;
-        }
-
-        .card-overlay h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary-glow);
-        }
-
-        .logo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 3rem;
-            align-items: center;
-            justify-items: center;
-            margin-top: 3rem;
-        }
-
-        .logo-grid img {
-            max-width: 120px;
-            height: auto;
-            filter: grayscale(100%) brightness(150%) contrast(80%);
-            opacity: 0.6;
-            transition: all 0.5s ease;
-        }
-
-        .logo-grid img:hover {
-            filter: grayscale(0%) brightness(100%) contrast(100%);
-            opacity: 1;
-            transform: scale(1.1);
-        }
-
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-
-        .hidden {
-            opacity: 0;
-            transform: translateY(60px) scale(0.95);
-            filter: blur(10px);
-        }
-        .show {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            filter: blur(0);
-        }
-
-       /* --- OPTIMIZACIÓN RESPONSIVA MÓVIL --- */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; }
-            h2 { font-size: 2rem; }
-            section { padding: 6rem 5% 3rem 5%; }
-            .glass-panel { padding: 2.5rem 1.5rem; }
-            
-            /* Ajustes finos al menú superior en celular */
-            .icon-nav {
-                gap: 0.8rem;
-                padding: 0.8rem 0;
-            }
-            .icon-nav a {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
-            }
-            /* Ocultar tooltips en móvil para evitar bugs visuales al tocar */
-            .icon-nav a::after {
-                display: none;
-            }
-            
-            /* Ajuste para 2 columnas en galería */
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-            .btn-container { flex-direction: column; width: 100%; }
-            .btn-glow, .btn-outline { width: 100%; justify-content: center; }
-
-            /* Ajuste de Fuerza Bruta para 2 columnas exactas */
-        .logo-grid { 
-            display: grid !important;
-            grid-template-columns: 1fr 1fr !important; /* 2 fracciones idénticas */
-            gap: 10px !important;
-            width: 100% !important;
-            padding: 0 !important;
-        }
-
-        .logo-grid img {
-            width: 100% !important; 
-            max-width: 110px !important; 
-            height: auto !important;
-            object-fit: contain !important; /* Obliga a la imagen a caber sin deformarse */
-            margin: 0 auto !important;
-        }
-        }
+        /* Botones B2B */
+        .btn-container { display: flex; gap: 1.5rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 1rem; }
+        .btn-glow { display: inline-flex; align-items: center; gap: 10px; padding: 1.1rem 2.5rem; font-size: 1.1rem; font-weight: 600; color: var(--bg-color); background: linear-gradient(45deg, var(--primary-glow), #00ffaa); border: none; border-radius: 40px; cursor: pointer; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: all 0.4s ease; box-shadow: 0 0 20px rgba(0, 243, 255, 0.4); }
+        .btn-glow:hover { box-shadow: 0 0 35px var(--primary-glow); transform: translateY(-4px) scale(1.02); }
+        .btn-outline { display: inline-flex; align-items: center; gap: 10px; padding: 1.1rem 2.5rem; font-size: 1.1rem; font-weight: 600; color: var(--text-main); background: transparent; border: 2px solid var(--wp-color); border-radius: 40px; cursor: pointer; text-decoration: none; text-transform: uppercase; transition: all 0.4s ease; }
+        .btn-outline:hover { background: rgba(37, 211, 102, 0.1); transform: translateY(-4px) scale(1.02); border-color: #2ee672; }
         
+        .btn-wa-pro { border-color: rgba(37, 211, 102, 0.5); }
+        .btn-wa-pro i { color: var(--wp-color); font-size: 1.3rem; text-shadow: 0 0 10px rgba(37, 211, 102, 0.4); transition: color 0.3s ease; }
+        .btn-wa-pro:hover i { color: #fff; text-shadow: none; }
+        .btn-secondary { display: inline-flex; align-items: center; padding: 0.8rem 1.8rem; font-size: 0.95rem; font-weight: 600; color: var(--primary-glow); background: rgba(0, 243, 255, 0.05); border: 1px solid rgba(0, 243, 255, 0.3); border-radius: 40px; text-decoration: none; transition: 0.3s ease; margin-top: 1rem; }
+        .btn-secondary:hover { background: rgba(0, 243, 255, 0.15); border-color: var(--primary-glow); color: #fff; }
+
+        /* Grids (Nosotros, Trust, Galería, Logos) */
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .why-card { background: rgba(255,255,255,0.02); padding: 2rem 1.5rem; border-radius: 16px; border: 1px solid var(--glass-border); transition: transform 0.3s ease; }
+        .why-card:hover { transform: translateY(-5px); border-color: rgba(0, 243, 255, 0.3); background: rgba(255,255,255,0.05); }
+        .why-card i { font-size: 2.5rem; color: var(--primary-glow); margin-bottom: 1rem; }
+
+        .trust-badges { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem; }
+        .trust-item { text-align: center; background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--glass-border); flex: 1; min-width: 180px; }
+        .trust-item h3 { font-size: 2rem; color: var(--primary-glow); margin-bottom: 0.5rem; text-shadow: 0 0 15px rgba(0,243,255,0.3); }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2rem; }
+        .gallery-card { background: rgba(0,0,0,0.4); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; transition: 0.4s ease; text-align: left; }
+        .gallery-card img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.5s ease; border-bottom: 1px solid var(--glass-border); }
+        .gallery-card:hover img { transform: scale(1.05); }
+        .gallery-info { padding: 1.5rem; }
+        .gallery-info h4 { font-size: 1.2rem; color: var(--primary-glow); margin-bottom: 0.5rem; }
+        .gallery-info p { font-size: 0.9rem; margin-bottom: 0; line-height: 1.5; }
+
+        .logo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; align-items: center; justify-items: center; margin-top: 2rem; }
+        .logo-item { background: rgba(255,255,255,0.03); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--glass-border); transition: all 0.4s ease; width: 100%; display: flex; justify-content: center;}
+        .logo-item img { max-width: 100px; height: auto; filter: grayscale(100%) brightness(150%); opacity: 0.6; transition: 0.4s ease; }
+        .logo-item:hover { transform: scale(1.05); background: rgba(0, 243, 255, 0.05); border-color: var(--primary-glow); box-shadow: 0 0 20px rgba(0, 243, 255, 0.3); }
+        .logo-item:hover img { filter: grayscale(0%) brightness(100%); opacity: 1; }
+
+        @keyframes shine { to { background-position: 200% center; } }
+        .hidden { opacity: 0; transform: translateY(60px) scale(0.95); filter: blur(10px); }
+        .show { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+
+        .sticky-cta { display: none; }
+
+        /* --- VISTA ESCRITORIO (Aumento de iconos) --- */
+        @media (min-width: 768px) {
+            .icon-nav { gap: 2.5rem; padding: 1.2rem 0; }
+            .icon-nav a i { font-size: 1.8rem; width: 50px; height: 50px; }
+            .icon-nav a { font-size: 0.95rem; }
+        }
+
+        /* --- VISTA MÓVIL (Corrección del gap de CSS) --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.8rem; } 
+            h2 { font-size: 1.8rem; }
+            section { padding: 7rem 5% 4rem 5%; min-height: auto; }
+            .glass-panel { padding: 2.5rem 1.5rem; }
+            body { padding-bottom: 70px; } 
+            
+            .icon-nav { gap: 0.8rem; padding: 0.5rem 0; }
+            .icon-nav a span { display: none; } 
+            .icon-nav a i { width: 35px; height: 35px; font-size: 1.1rem; }
+            
+            .gallery-grid { grid-template-columns: 1fr; }
+            .btn-container { flex-direction: column; width: 100%; }
+            .btn-glow, .btn-outline { width: 100%; justify-content: center; font-size: 1rem; }
+            
+            .trust-badges { gap: 1rem; }
+            .trust-item { padding: 1.2rem 0.5rem; min-width: 140px; }
+            .trust-item h3 { font-size: 1.4rem; }
+            
+            .logo-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+            .logo-item { padding: 1rem; }
+            .logo-item img { max-width: 70px; }
+
+            .sticky-cta { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 2000; box-shadow: 0 -4px 20px rgba(0,0,0,0.5); }
+            .sticky-cta a { flex: 1; padding: 1.2rem; text-align: center; text-decoration: none; font-weight: 700; font-size: 1rem; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 8px; text-transform: uppercase; }
+            .wa-btn { background: #25D366; }
+            .call-btn { background: #0051ff; }
+        }
     </style>
 </head>
 <body>
 
-    <canvas id="bg-canvas"></canvas>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
     <div class="content-wrapper">
 
-        <!-- NAVEGACIÓN SUPERIOR FIJA -->
+        <!-- NAVEGACIÓN SUPERIOR -->
         <nav class="icon-nav">
-            <a href="#inicio" data-tooltip="Inicio" class="active"><i class="fa-solid fa-house"></i></a>
-            <a href="#epoxicos" data-tooltip="Recubrimientos Epóxicos"><i class="fa-solid fa-layer-group"></i></a>
-            <a href="#poliuretano" data-tooltip="Sistemas de Poliuretano"><i class="fa-solid fa-shield-halved"></i></a>
-            <a href="#galeria" data-tooltip="Galería de Innovación"><i class="fa-solid fa-camera-retro"></i></a>
-            <a href="#logos" data-tooltip="Socios Estratégicos"><i class="fa-solid fa-network-wired"></i></a>
-            <a href="#contacto" data-tooltip="Contacto Seguro"><i class="fa-solid fa-satellite-dish"></i></a>
+            <a href="#inicio" class="active"><i class="fa-solid fa-house"></i><span>Inicio</span></a>
+            <a href="#diferenciador"><i class="fa-solid fa-shield"></i><span>Por qué ALTEK</span></a>
+            <a href="#servicios"><i class="fa-solid fa-layer-group"></i><span>Servicios</span></a>
+            <a href="#galeria"><i class="fa-solid fa-camera-retro"></i><span>Proyectos</span></a>
+            <a href="#experiencia"><i class="fa-solid fa-medal"></i><span>Experiencia</span></a>
+            <a href="#logos"><i class="fa-solid fa-network-wired"></i><span>Socios</span></a>
+            <a href="#contacto"><i class="fa-solid fa-satellite-dish"></i><span>Contacto</span></a>
         </nav>
 
         <section id="inicio">
             <div class="glass-panel hidden">
-                <h1>ALTEK</h1>
-                <p>El futuro de las superficies industriales. Soluciones integrales de alta ingeniería que transforman, protegen y evolucionan tu infraestructura operativa con una estética de vanguardia.</p>
+                <h1>Recubrimientos Industriales que Prolongan la Vida Útil de su Infraestructura</h1>
+                <p>Pisos epóxicos, poliuretanos, impermeabilización y protección anticorrosiva para plantas industriales, almacenes y centros logísticos.</p>
                 <div class="btn-container">
-                    <a href="https://calendly.com/oderfla-t/30min" target="_blank" rel="noopener noreferrer" class="btn-glow">
-                        <i class="fa-regular fa-calendar-check"></i> Agendar Diagnóstico
-                    </a>
-                    <a href="https://wa.me/525535820734?text=Hola,%20vengo%20de%20la%20página%20web%20y%20me%20interesa%20evaluar%20un%20proyecto%20de%20piso%20industrial." target="_blank" rel="noopener noreferrer" class="btn-outline">
-                        <i class="fa-brands fa-whatsapp"></i> Chat Rápido
+                    <a href="#contacto" class="btn-glow"><i class="fa-regular fa-file-lines"></i> Solicitar Cotización</a>
+                    <a href="https://wa.me/525535820734?text=Hola,%20necesito%20cotizar%20un%20proyecto%20de%20recubrimiento%20industrial." target="_blank" rel="noopener noreferrer" class="btn-outline btn-wa-pro">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar Especialista
                     </a>
                 </div>
             </div>
         </section>
 
-        <section id="epoxicos">
+        <section id="diferenciador">
+            <div class="glass-panel hidden">
+                <h2><i class="fa-solid fa-shield-halved"></i> ¿Por qué elegir ALTEK?</h2>
+                <div class="why-grid">
+                    <div class="why-card"><i class="fa-solid fa-hard-hat"></i><h4>Ingeniería Especializada</h4></div>
+                    <div class="why-card"><i class="fa-solid fa-award"></i><h4>Materiales Certificados</h4></div>
+                    <div class="why-card"><i class="fa-solid fa-file-signature"></i><h4>Garantía por Escrito</h4></div>
+                    <div class="why-card"><i class="fa-solid fa-stopwatch"></i><h4>Entrega en Tiempo</h4></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios">
             <div class="glass-panel hidden">
                 <h2><i class="fa-solid fa-layer-group"></i> Tecnología Epóxica</h2>
                 <p>Resistencia extrema para entornos críticos. Nuestros recubrimientos epóxicos monolíticos son impenetrables ante químicos, impacto severo y tráfico pesado continuos.</p>
+                <a href="#contacto" class="btn-secondary">¿Necesita un piso con alta resistencia química? Cotizar aquí</a>
             </div>
         </section>
 
         <section id="poliuretano">
             <div class="glass-panel hidden">
-                <h2><i class="fa-solid fa-shield-halved"></i> Escudos de Poliuretano</h2>
-                <p>Flexibilidad térmica y estabilidad UV certificadas. Sistemas de aislamiento y recubrimiento molecular diseñados para soportar los choques térmicos más radicales en infraestructuras críticas.</p>
+                <h2><i class="fa-solid fa-temperature-arrow-down"></i> Sistemas de Poliuretano y Aislamiento</h2>
+                <p>Aislamiento térmico avanzado para <strong>cámaras de refrigeración</strong>, techos y estructuras. Protege contra rayos UV, humedad y cambios extremos de temperatura, reduciendo significativamente los costos de mantenimiento.</p>
+                <a href="#contacto" class="btn-secondary">Proteger infraestructura de cambios extremos</a>
             </div>
         </section>
 
         <section id="galeria">
             <div class="glass-panel hidden">
-                <h2><i class="fa-solid fa-camera-retro"></i> Galería de Innovación Operativa</h2>
-                <p>Explore nuestros proyectos destacados: donde la ciencia de los materiales se encuentra con la excelencia industrial para crear entornos de alto rendimiento.</p>
+                <h2><i class="fa-solid fa-camera-retro"></i> Proyectos Destacados</h2>
+                <p>Donde la ciencia de los materiales se encuentra con la excelencia industrial.</p>
                 <div class="gallery-grid">
                     <div class="gallery-card">
-                        <img src="image_3.png" alt="Pista de Autobuses">
-                        <div class="card-overlay"><h4>Pista de Autobuses de Alta Resistencia</h4></div>
+                        <img src="image_3.png" alt="Pista de Autobuses" loading="lazy">
+                        <div class="gallery-info"><h4>Pista de Autobuses</h4><p><strong>Sistema de Alta Resistencia.</strong> Tráfico pesado continuo. <br><em>Tiempo de ejecución: Fin de semana operativo.</em></p></div>
                     </div>
                     <div class="gallery-card">
-                        <img src="image_4.png" alt="Zona de Carga">
-                        <div class="card-overlay"><h4>Zona de Carga Monolítica</h4></div>
+                        <img src="image_4.png" alt="Zona de Carga" loading="lazy">
+                        <div class="gallery-info"><h4>Zona de Carga Monolítica</h4><p><strong>Piso Epóxico Antideslizante.</strong> Entorno logístico de 1,200 m². <br><em>Certificado para montacargas.</em></p></div>
                     </div>
                     <div class="gallery-card">
-                        <img src="image_0.png" alt="Instalaciones de Almacenamiento">
-                        <div class="card-overlay"><h4>Instalaciones de Almacenamiento Crítico</h4></div>
+                        <img src="image_0.png" alt="Instalaciones de Almacenamiento" loading="lazy">
+                        <div class="gallery-info"><h4>Almacenamiento Crítico</h4><p><strong>Recubrimiento Antipolvo.</strong> Cumplimiento estricto normativo. <br><em>Superficie 100% lavable.</em></p></div>
                     </div>
                     <div class="gallery-card">
-                        <img src="image_5.png" alt="Entorno de Fabricación">
-                        <div class="card-overlay"><h4>Entorno de Fabricación de Alta Precisión</h4></div>
+                        <img src="image_5.png" alt="Entorno de Fabricación" loading="lazy">
+                        <div class="gallery-info"><h4>Fabricación de Alta Precisión</h4><p><strong>Acabado Poliuretano.</strong> Resistencia a derrames químicos. <br><em>Garantía por escrito de 5 años.</em></p></div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiencia">
+            <div class="glass-panel hidden">
+                <h2><i class="fa-solid fa-certificate"></i> Respaldo Operativo</h2>
+                <p>Nuestros números respaldan la calidad técnica y el compromiso con cada proyecto industrial que desarrollamos.</p>
+                <div class="trust-badges">
+                    <div class="trust-item"><h3>+24 Años</h3><p>De Experiencia</p></div>
+                    <div class="trust-item"><h3>CDMX / <br> EDOMEX</h3><p>Cobertura Industrial</p></div>
+                    <div class="trust-item"><h3>NOM-251</h3><p>Cumplimiento</p></div>
                 </div>
             </div>
         </section>
 
         <section id="logos">
             <div class="glass-panel hidden">
-                <h2><i class="fa-solid fa-network-wired"></i> Socio Estratégico de Industrias Líderes</h2>
-                <p>Empresas globales que confían sus entornos más exigentes a las soluciones tecnológicas de ALTEK. Nuestra ingeniería es la base de su éxito operativo.</p>
+                <h2><i class="fa-solid fa-network-wired"></i> Socios Estratégicos</h2>
+                <p>Empresas globales que confían sus entornos más exigentes a las soluciones tecnológicas de ALTEK.</p>
                 <div class="logo-grid">
-                    <img src="Mercedes.png" alt="Mercedes-Benz Logo">
-                    <img src="Mazda.png" alt="Mazda Logo">
-                    <img src="Coca.png" alt="Coca-Cola FEMSA Logo">
-                    <img src="Honda.png" alt="Honda Logo">
-                    <img src="Comex.png" alt="Comex Logo">
-                    <img src="Alpura.png" alt="Alpura Logo">
-                    <img src="Novartis.png" alt="Novartis Logo">
-                    <img src="Banorte.png" alt="Banorte Logo">
-                    <img src="Azteca.png" alt="TV Azteca Logo">
-                    <img src="Accel.png" alt="Accel Logo">
-                </div>
+                    <div class="logo-item"><img src="Mercedes.png" alt="Mercedes-Benz" loading="lazy"></div>
+                    <div class="logo-item"><img src="Mazda.png" alt="Mazda" loading="lazy"></div>
+                    <div class="logo-item"><img src="Coca.png" alt="Coca-Cola FEMSA" loading="lazy"></div>
+                    <div class="logo-item"><img src="Honda.png" alt="Honda" loading="lazy"></div>
+                    <div class="logo-item"><img src="Comex.png" alt="Comex" loading="lazy"></div>
+                    <div class="logo-item"><img src="Alpura.png" alt="Alpura" loading="lazy"></div>
+                    <div class="logo-item"><img src="Novartis.png" alt="Novartis" loading="lazy"></div>
+                    <div class="logo-item"><img src="Banorte.png" alt="Banorte" loading="lazy"></div>
+                    <div class="logo-item"><img src="Azteca.png" alt="TV Azteca" loading="lazy"></div>
+                    <div class="logo-item"><img src="Accel.png" alt="Accel" loading="lazy"></div>
+               </div>
             </div>
         </section>
 
         <section id="contacto">
             <div class="glass-panel hidden">
-                <h2>Evaluación Técnica Inmediata</h2>
-                <p>Evite paros operativos o no conformidades ante la NOM-251. Conecte con nuestro equipo para programar un diagnóstico estructural sin costo en su planta.</p>
+                <h2><i class="fa-solid fa-headset"></i> Proteja su Inversión Hoy Mismo</h2>
+                <p>Maximice la durabilidad de sus instalaciones y prevenga gastos de mantenimiento. Solicite un diagnóstico técnico estructural o contacte a nuestro equipo de especialistas.</p>
                 <div class="btn-container">
                     <a href="https://calendly.com/oderfla-t/30min" target="_blank" rel="noopener noreferrer" class="btn-glow">
-                        <i class="fa-regular fa-calendar-check"></i> Agendar Visita Técnica
+                        <i class="fa-regular fa-calendar-check"></i> Agendar Diagnóstico
                     </a>
-                    <a href="https://wa.me/525535820734?text=Hola,%20me%20gustaría%20resolver%20algunas%20dudas%20técnicas%20sobre%20recubrimientos." target="_blank" rel="noopener noreferrer" class="btn-outline">
-                        <i class="fa-brands fa-whatsapp"></i> Contactar por WhatsApp
+                    <a href="https://wa.me/525535820734?text=Hola,%20me%20gustaría%20resolver%20dudas%20técnicas%20sobre%20recubrimientos." target="_blank" rel="noopener noreferrer" class="btn-outline btn-wa-pro">
+                        <i class="fa-brands fa-whatsapp"></i> Consultar a un Especialista
                     </a>
                 </div>
             </div>
@@ -474,120 +271,76 @@
 
     </div>
 
+    <!-- STICKY FOOTER MÓVIL -->
+    <div class="sticky-cta">
+        <a href="tel:525535820734" class="call-btn"><i class="fa-solid fa-phone"></i> Llamar</a>
+        <a href="https://wa.me/525535820734" class="wa-btn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> Cotizar</a>
+    </div>
+
     <script>
+        // SCRIPT DE PARTÍCULAS
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
         const particleCount = 75; 
         const connectionDistance = 110; 
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
         class Particle {
-            constructor() {
-                this.reset();
-            }
-            reset() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.4; 
-                this.vy = (Math.random() - 0.5) * 0.4;
-                this.radius = Math.random() * 2 + 1;
-            }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(0, 243, 255, 0.4)';
-                ctx.fill();
-            }
+            constructor() { this.reset(); }
+            reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; this.radius = Math.random() * 2 + 1; }
+            update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width) this.vx *= -1; if (this.y < 0 || this.y > canvas.height) this.vy *= -1; }
+            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fillStyle = 'rgba(0, 243, 255, 0.4)'; ctx.fill(); }
         }
 
-        function initParticles() {
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
+        function initParticles() { particles = []; for (let i = 0; i < particleCount; i++) { particles.push(new Particle()); } }
 
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
             let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 10, canvas.width/2, canvas.height/2, canvas.width);
-            gradient.addColorStop(0, '#0d1127');
-            gradient.addColorStop(1, '#030307');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-
+            gradient.addColorStop(0, '#0d1127'); gradient.addColorStop(1, '#030307'); ctx.fillStyle = gradient; ctx.fillRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < connectionDistance) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        let alpha = (1 - (distance / connectionDistance)) * 0.18;
-                        ctx.strokeStyle = `rgba(0, 243, 255, ${alpha})`;
-                        ctx.lineWidth = 0.8;
-                        ctx.stroke();
-                    }
+                    const dx = particles[i].x - particles[j].x; const dy = particles[i].y - particles[j].y; const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < connectionDistance) { ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); let alpha = (1 - (distance / connectionDistance)) * 0.18; ctx.strokeStyle = `rgba(0, 243, 255, ${alpha})`; ctx.lineWidth = 0.8; ctx.stroke(); }
                 }
             }
             requestAnimationFrame(animateParticles);
         }
-        
-        initParticles();
-        animateParticles();
+        initParticles(); animateParticles();
 
+        // ANIMACIÓN DE ENTRADA (INTERSECTION OBSERVER)
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        }, { threshold: 0.2 });
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('show'); } });
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
 
-        const hiddenElements = document.querySelectorAll('.hidden');
-        hiddenElements.forEach((el) => observer.observe(el));
-
+        // OPTIMIZACIÓN SENIOR: THROTTLE PARA EL SCROLL MENÚ
         const sections = document.querySelectorAll('section');
         const navLinks = document.querySelectorAll('.icon-nav a');
+        let isScrolling = false;
 
         window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - sectionHeight / 3)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(a => {
-                a.classList.remove('active');
-                if (a.getAttribute('href').includes(current)) {
-                    a.classList.add('active');
-                }
-            });
+            if (!isScrolling) {
+                window.requestAnimationFrame(() => {
+                    let current = '';
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.clientHeight;
+                        if (scrollY >= (sectionTop - sectionHeight / 3)) { current = section.getAttribute('id'); }
+                    });
+                    navLinks.forEach(a => {
+                        a.classList.remove('active');
+                        if (a.getAttribute('href').includes(current)) { a.classList.add('active'); }
+                    });
+                    isScrolling = false;
+                });
+                isScrolling = true;
+            }
         });
     </script>
 </body>
