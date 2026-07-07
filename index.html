@@ -138,10 +138,15 @@
             .icon-nav a span { font-size: 0.85rem; }
         }
 
-        /* --- RESPONSIVE MÓVIL --- */
-            @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            section { padding: 7rem 5% 6rem 5%; min-height: auto; }
+  
+	/* --- RESPONSIVE MÓVIL --- */
+        @media (max-width: 768px) {
+            /* 1. Título mucho más compacto */
+            h1 { 
+                font-size: 1.6rem !important; 
+                line-height: 1.2 !important; 
+                margin-bottom: 1rem; 
+            }        
             
             /* Hacemos la tarjeta ligeramente más transparente para que luzca el fondo azul */
             .glass-panel { padding: 2.5rem 1.5rem; background: rgba(16, 24, 39, 0.65); }
