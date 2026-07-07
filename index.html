@@ -46,7 +46,17 @@
 
         /* SECCIONES Y PANELES */
         section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 8rem 5% 4rem 5%; position: relative; }
-        .glass-panel { background: var(--glass-bg); backdrop-filter: blur(25px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 4rem 3rem; max-width: 1000px; width: 100%; text-align: center; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8); }
+        .glass-panel { 
+            background: rgba(16, 24, 39, 0.75); 
+            backdrop-filter: blur(15px); 
+            border: 1px solid rgba(0, 212, 255, 0.5); /* Borde cian al 50% de intensidad */
+            border-radius: 24px; 
+            padding: 4rem 3rem; 
+            max-width: 1000px; 
+            width: 100%; 
+            text-align: center; 
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); 
+        }
 
         /* TÍTULOS (Sin degradado global para permitir colores específicos) */
         h1 { font-size: 3rem; letter-spacing: 1px; line-height: 1.3; margin-bottom: 1.5rem; font-weight: 800; color: var(--text-main); }
@@ -57,11 +67,27 @@
         .btn-container { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
         
         /* Botón Naranja CTA */
-        .btn-glow { display: inline-flex; align-items: center; gap: 10px; padding: 1.1rem 2rem; font-size: 1.05rem; font-weight: 700; color: #ffffff; background: var(--cta-orange); border: none; border-radius: 40px; cursor: pointer; text-decoration: none; text-transform: uppercase; box-shadow: 0 0 20px rgba(245, 124, 0, 0.4); transition: 0.3s; }
+       .btn-glow { 
+            display: inline-flex; align-items: center; gap: 10px; 
+            padding: 1.2rem 2.5rem; font-size: 1.1rem; font-weight: 800; 
+            color: #ffffff; background: var(--cta-orange); 
+            border: none; border-radius: 40px; cursor: pointer; text-decoration: none; text-transform: uppercase; 
+            letter-spacing: 1px; /* Toque premium que separa las letras */
+            box-shadow: 0 0 25px rgba(245, 124, 0, 0.6); /* Rey indiscutible */
+            transition: 0.3s; 
+        }
         .btn-glow:hover { box-shadow: 0 0 35px var(--cta-orange); transform: translateY(-4px) scale(1.02); background: #FF8F24; }
         
         /* Botón WhatsApp Sólido */
-        .btn-wa-pro { display: inline-flex; align-items: center; gap: 10px; padding: 1.1rem 2rem; font-size: 1.05rem; font-weight: 700; background: var(--wp-color); color: #ffffff; border: none; border-radius: 40px; text-decoration: none; text-transform: uppercase; transition: 0.3s; }
+       .btn-wa-pro { 
+            display: inline-flex; align-items: center; gap: 10px; 
+            padding: 1.2rem 2.5rem; font-size: 1.1rem; font-weight: 800; 
+            background: var(--wp-color); color: #ffffff; 
+            border: none; border-radius: 40px; text-decoration: none; text-transform: uppercase; 
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2); /* Sombra muy discreta para no competir */
+            transition: 0.3s; 
+        }
         .btn-wa-pro i { color: #ffffff; font-size: 1.3rem; }
         .btn-wa-pro:hover { background: #2EE672; box-shadow: 0 0 20px rgba(37, 211, 102, 0.5); transform: translateY(-4px) scale(1.02); }
         
@@ -72,9 +98,29 @@
         .btn-calendly { background: transparent; border: 2px solid var(--primary-glow); color: var(--primary-glow); display: inline-flex; align-items: center; gap: 10px; padding: 1.1rem 2rem; font-size: 1.05rem; font-weight: 700; border-radius: 40px; text-decoration: none; text-transform: uppercase; transition: 0.3s; }
         .btn-calendly:hover { background: rgba(0, 212, 255, 0.1); color: #fff; } 
 
+	/* LÍNEA DE CONFIANZA */
+        .trust-line { 
+            margin-top: 2rem; /* Damos oxígeno separándola de los botones */
+            font-size: 0.95rem; 
+            color: var(--text-muted); 
+            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; opacity: 0.9; 
+        }
+        
+        .trust-line span { 
+            display: flex; align-items: center; gap: 6px; 
+        }
+
         /* GRIDS (Tarjetas) */
         .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .card { background: rgba(255,255,255,0.02); padding: 2rem 1.5rem; border-radius: 16px; border: 1px solid var(--glass-border); transition: 0.3s; text-align: left; }
+	.card { 
+            background: #101827; 
+            padding: 2.5rem 1.5rem; 
+            border-radius: 16px; 
+            border: 1px solid rgba(0, 212, 255, 0.4); /* Consistencia visual con el panel */
+            transition: 0.3s; 
+            text-align: left; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Hacemos que floten */
+        }       
         .card:hover { transform: translateY(-5px); border-color: rgba(0, 243, 255, 0.3); background: rgba(255,255,255,0.05); }
         .card i { font-size: 2.5rem; color: var(--primary-glow); margin-bottom: 1rem; }
         .card h4 { color: #fff; font-size: 1.2rem; font-weight: 600; margin-bottom: 0.8rem; }
@@ -138,67 +184,72 @@
             .icon-nav a span { font-size: 0.85rem; }
         }
 
-  
-        /* --- RESPONSIVE MÓVIL --- */
+	/* --- RESPONSIVE MÓVIL --- */
         @media (max-width: 768px) {
-            /* 1. Título mucho más compacto */
-           h1 { 
-                font-size: 1.7rem !important; /* Ligeramente menor para acomodar las palabras */
-                line-height: 1.2 !important; 
-                letter-spacing: -0.5px !important; /* Junta un poquito las letras */
-                margin-bottom: 1.2rem !important; 
+            /* 1. Título con jerarquía visual y espaciado */
+            h1 { 
+                font-size: 1.85rem !important; 
+                line-height: 1.25 !important; 
+                letter-spacing: -0.5px !important; 
+                margin-bottom: 1.5rem !important; 
             }
             
-            /* 2. Párrafo secundario más pequeño para no robar atención */
+            /* 2. Párrafo secundario */
             .glass-panel p { 
                 font-size: 1.05rem !important; 
                 line-height: 1.4; 
                 margin-bottom: 1.5rem; 
             }
 
-            /* 3. Ajuste del panel para darle más "ancho" al texto */
+            /* 3. Ajuste del panel (Mantiene tu transparencia de 0.45 y agrega el borde brillante) */
             section { 
                 padding: 6rem 4% 5rem 4%; 
                 min-height: auto; 
             }
             .glass-panel { 
-                padding: 2rem 1rem; 
-                background: rgba(16, 24, 39, 0.65); 
-            }
-                        
-            /* Hacemos la tarjeta ligeramente más transparente para que luzca el fondo azul */
-           .glass-panel { 
-                padding: 2rem 1rem; 
-                background: rgba(16, 24, 39, 0.45) !important; /* De 0.65 lo bajamos a 0.45 */
+                padding: 2.5rem 1.2rem; 
+                background: rgba(16, 24, 39, 0.45) !important; 
                 backdrop-filter: blur(12px) !important;
+                border: 1px solid rgba(0, 212, 255, 0.5) !important;
             }
             
-            /* Scroll horizontal en nav... (el resto de tu código móvil se queda igual) */
-            
-            /* Scroll horizontal en nav para que no se amontone */
-            .icon-nav { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding: 0.8rem; gap: 1rem; -webkit-overflow-scrolling: touch; }
-            .icon-nav::-webkit-scrollbar { display: none; }
-            .icon-nav a span { display: none; }
-            .icon-nav a i { width: 35px; height: 35px; font-size: 1.1rem; }
+            /* 4. Botones apilados al 100% para fácil clic */
+            .btn-container { 
+                flex-direction: column; 
+                width: 100%; 
+                gap: 1.2rem; 
+            }
+            .btn-glow, .btn-wa-pro, .btn-outline, .btn-calendly { 
+                width: 100%; 
+                justify-content: center; 
+                text-align: center; 
+                padding: 1.2rem 1rem !important; 
+            }
 
+            /* 5. Menú superior más discreto y deslizable */
+            .icon-nav { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding: 0.5rem; gap: 0.5rem; -webkit-overflow-scrolling: touch; }
+            .icon-nav::-webkit-scrollbar { display: none; }
+            .icon-nav a { min-width: 50px; font-size: 0.65rem; }
+            .icon-nav a span { display: none; }
+            .icon-nav a i { width: 32px; height: 32px; font-size: 1.1rem; }
+
+            /* 6. Corrección de Grids para Formularios y Galería en móvil */
             .gallery-grid { grid-template-columns: 1fr; }
             .b2b-form { grid-template-columns: 1fr; padding: 1.5rem; }
             .full-width { grid-column: span 1; }
             .form-btn { grid-column: span 1; }
-            
-            .btn-container { flex-direction: column; width: 100%; }
-            .btn-glow, .btn-outline, .btn-calendly { width: 100%; justify-content: center; text-align: center; }
 
-            /* Ocultar flotante en móvil para usar la barra fija */
+            /* 7. Ocultar flotante en móvil para usar la barra fija */
             .floating-wa { display: none; }
 
-            /* BARRA FIJA MÓVIL */
+            /* 8. BARRA FIJA MÓVIL (Tu código intacto) */
             .sticky-mobile { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 2000; box-shadow: 0 -4px 20px rgba(0,0,0,0.5); }
             .sticky-mobile a { flex: 1; padding: 1.2rem 0.5rem; text-align: center; text-decoration: none; font-weight: 800; font-size: 0.9rem; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 8px; text-transform: uppercase; }
             .btn-sticky-cal { background: var(--primary-glow); color: #000 !important; }
             .btn-sticky-wa { background: #25D366; }
             body { padding-bottom: 70px; }
-        }
+        }  
+       
     </style>
 </head>
 <body>
