@@ -139,10 +139,14 @@
         }
 
         /* --- RESPONSIVE MÓVIL --- */
-        @media (max-width: 768px) {
+            @media (max-width: 768px) {
             h1 { font-size: 2rem; }
             section { padding: 7rem 5% 6rem 5%; min-height: auto; }
-            .glass-panel { padding: 2.5rem 1.5rem; }
+            
+            /* Hacemos la tarjeta ligeramente más transparente para que luzca el fondo azul */
+            .glass-panel { padding: 2.5rem 1.5rem; background: rgba(16, 24, 39, 0.65); }
+            
+            /* Scroll horizontal en nav... (el resto de tu código móvil se queda igual) */
             
             /* Scroll horizontal en nav para que no se amontone */
             .icon-nav { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding: 0.8rem; gap: 1rem; -webkit-overflow-scrolling: touch; }
@@ -211,6 +215,12 @@
                     <a href="https://wa.me/525535820734?text=Hola,%20me%20gustaría%20agendar%20un%20diagnóstico%20técnico%20gratuito%20para%20mi%20planta." target="_blank" rel="noopener noreferrer" class="btn-wa-pro">
                         <i class="fa-brands fa-whatsapp"></i> Hablar con un Especialista
                     </a>
+                </div>
+	<!-- Línea de Confianza -->
+                <div class="trust-line">
+                    <span><i class="fa-solid fa-check"></i> Cotización en 24h</span>
+                    <span><i class="fa-solid fa-check"></i> Garantía por escrito</span>
+                    <span><i class="fa-solid fa-check"></i> Atención Nacional</span>
                 </div>
             </div>
         </section>
@@ -517,7 +527,8 @@
         function initParticles() { particles = []; for (let i = 0; i < particleCount; i++) { particles.push(new Particle()); } }
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-          let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 10, canvas.width/2, canvas.height/2, canvas.width);
+          let radioMaximo = Math.max(canvas.width, canvas.height);
+	let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 10, canvas.width/2, canvas.height/2, radioMaximo * 0.9);
 	gradient.addColorStop(0, '#0F3D5E'); /* Azul corporativo en el centro */
 	gradient.addColorStop(1, '#08111F'); /* Fondo oscuro en los bordes */
 	ctx.fillStyle = gradient; 
