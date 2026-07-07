@@ -280,7 +280,7 @@
                 </div>
                 <div class="btn-container" style="margin-top: 3rem;">
                     <a href="https://calendly.com/oderfla-t/30min" target="_blank" rel="noopener noreferrer" class="btn-outline btn-calendly">
-                        <i class="fa-regular fa-calendar-alt"></i> Agendar Diagnóstico en Calendly
+                        <i class="fa-regular fa-calendar-alt"></i> Agendar Diagnóstico en Calendario
                     </a>
                 </div>
             </div>
@@ -301,7 +301,7 @@
                         <h4>Sistemas de Poliuretano</h4>
                         <p>Aislamiento térmico avanzado. Protege contra UV, humedad y cambios extremos de temperatura.</p>
                     </div>
-                    <div class="card" style="border-color: var(--primary-glow); background: rgba(0, 243, 255, 0.05);">
+                    <div class="card" style="border-color: var(--primary-glow); background: rgba(0, 96, 255, 0.05);">
                         <i class="fa-solid fa-hammer"></i>
                         <h4>Rehabilitación Estructural de Pisos</h4>
                         <p>Servicio quirúrgico para extender la vida útil de su firme sin reemplazarlo. Reparamos juntas constructivas, baches, grietas activas y curvas sanitarias. Ideal para zonas de riesgo inmediatas.</p>
@@ -512,7 +512,7 @@
 
                 <div class="btn-container" style="margin-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2.5rem;">
                     <a href="https://calendly.com/oderfla-t/30min" target="_blank" rel="noopener noreferrer" class="btn-outline btn-calendly">
-                        <i class="fa-regular fa-calendar-check"></i> O agende directamente en nuestro calendario
+                        <i class="fa-regular fa-calendar-check"></i> Agende directamente en nuestro calendario
                     </a>
                 </div>
             </div>
@@ -555,11 +555,12 @@
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 	    let radioMaximo = Math.max(canvas.width, canvas.height);
-            let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 10, canvas.width/2, canvas.height/2, radioMaximo * 0.9);
-            gradient.addColorStop(0, '#154C79'); /* Azul central más brillante */
-            gradient.addColorStop(1, '#0A1526'); /* Bordes menos negros, más azulados */
-            ctx.fillStyle = gradient; 
-            ctx.fillRect(0, 0, canvas.width, canvas.height);        
+            // Dentro de tu función animateParticles, ajusta el gradiente:
+	    let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 50, canvas.width/2, canvas.height/2, radioMaximo);
+	    gradient.addColorStop(0, '#1E3A8A'); /* Un azul mucho más eléctrico y claro en el centro */
+	    gradient.addColorStop(1, '#0F172A'); /* El fondo de la página */
+	    ctx.fillStyle = gradient;
+	    ctx.fillRect(0, 0, canvas.width, canvas.height);       
 
             particles.forEach(p => { p.update(); p.draw(); });
             for (let i = 0; i < particles.length; i++) {
