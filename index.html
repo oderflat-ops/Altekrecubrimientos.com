@@ -142,10 +142,11 @@
         /* --- RESPONSIVE MÓVIL --- */
         @media (max-width: 768px) {
             /* 1. Título mucho más compacto */
-            h1 { 
-                font-size: 1.6rem !important; 
+           h1 { 
+                font-size: 1.7rem !important; /* Ligeramente menor para acomodar las palabras */
                 line-height: 1.2 !important; 
-                margin-bottom: 1rem; 
+                letter-spacing: -0.5px !important; /* Junta un poquito las letras */
+                margin-bottom: 1.2rem !important; 
             }
             
             /* 2. Párrafo secundario más pequeño para no robar atención */
@@ -166,7 +167,11 @@
             }
                         
             /* Hacemos la tarjeta ligeramente más transparente para que luzca el fondo azul */
-            .glass-panel { padding: 2.5rem 1.5rem; background: rgba(16, 24, 39, 0.65); }
+           .glass-panel { 
+                padding: 2rem 1rem; 
+                background: rgba(16, 24, 39, 0.45) !important; /* De 0.65 lo bajamos a 0.45 */
+                backdrop-filter: blur(12px) !important;
+            }
             
             /* Scroll horizontal en nav... (el resto de tu código móvil se queda igual) */
             
@@ -227,7 +232,7 @@
                     Garantía Escrita.
                 </h1>
                 <p style="font-size: 1.2rem;">
-                    <strong style="color: #ffffff; font-size: 1.25rem;">Mercedes-Benz, Honda y Coca-Cola FEMSA</strong> 
+                    <strong>Mercedes-Benz, Honda y Coca-Cola FEMSA</strong> 
                     ya lo comprobaron — ¿cuándo visitamos su planta?
                 </p>
                 <div class="btn-container">
@@ -428,7 +433,7 @@
                     <div class="stat-item"><h3>+800,000</h3><p>m² Recubiertos</p></div>
                     <div class="stat-item"><h3>100%</h3><p>Fines de Semana</p></div>
                     <div class="stat-item"><h3>18 Meses</h3><p>Garantía Escrita</p></div>
-                    <div class="stat-item"><h3>Nacional</h3><p>Cobertura Logística</p></div>
+                    <div class="stat-item"><h3>Logística</h3><p>Cobertura Nacional</p></div>
                 </div>
             </div>
         </section>
@@ -549,12 +554,13 @@
         function initParticles() { particles = []; for (let i = 0; i < particleCount; i++) { particles.push(new Particle()); } }
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-          let radioMaximo = Math.max(canvas.width, canvas.height);
-	let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 10, canvas.width/2, canvas.height/2, radioMaximo * 0.9);
-	gradient.addColorStop(0, '#0F3D5E'); /* Azul corporativo en el centro */
-	gradient.addColorStop(1, '#08111F'); /* Fondo oscuro en los bordes */
-	ctx.fillStyle = gradient; 
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
+	    let radioMaximo = Math.max(canvas.width, canvas.height);
+            let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 10, canvas.width/2, canvas.height/2, radioMaximo * 0.9);
+            gradient.addColorStop(0, '#154C79'); /* Azul central más brillante */
+            gradient.addColorStop(1, '#0A1526'); /* Bordes menos negros, más azulados */
+            ctx.fillStyle = gradient; 
+            ctx.fillRect(0, 0, canvas.width, canvas.height);        
+
             particles.forEach(p => { p.update(); p.draw(); });
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
