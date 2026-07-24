@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- METADATOS B2B OPTIMIZADOS PARA GUADALAJARA -->
+    <title>Pisos Epóxicos en Guadalajara y Jalisco | ALTEK</title>
+    <meta name="description" content="Instalación de pisos epóxicos industriales y recubrimientos en Guadalajara, El Salto y Zapopan. Soluciones para manufactura, CEDIS y grado alimenticio.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { bg: '#08111F', cyan: '#00D4FF', cyanGlow: 'rgba(0, 212, 255, 0.5)', orange: '#F57C00', glass: 'rgba(16, 24, 39, 0.75)' }
+                    },
+                    fontFamily: { sans: ['Segoe UI', 'Helvetica', 'Arial', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel { @apply bg-brand-glass backdrop-blur-md border border-brand-cyanGlow rounded-3xl p-8 md:p-12 w-full max-w-5xl mx-auto shadow-[0_20px_50px_rgba(0,0,0,0.6)]; }
+            .nav-link { @apply flex flex-col items-center gap-1 text-slate-300 hover:text-brand-cyan transition-all text-[0.7rem] font-medium; }
+            .nav-icon { @apply w-9 h-9 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-lg transition-all; }
+            .nav-link:hover .nav-icon, .nav-link.active .nav-icon { @apply shadow-[0_0_15px_#00D4FF] border-brand-cyan -translate-y-1 scale-110 text-brand-cyan; }
+            .fade-in-section { @apply opacity-0 translate-y-10 blur-sm transition-all duration-700 ease-out; }
+            .fade-in-section.is-visible { @apply opacity-100 translate-y-0 blur-none; }
+            .btn-orange { @apply inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-extrabold uppercase tracking-wide bg-brand-orange rounded-full transition-all hover:bg-[#FF8F24] hover:scale-105 hover:shadow-[0_0_25px_rgba(245,124,0,0.6)]; }
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-white overflow-x-hidden pt-24 pb-20">
+
+    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"></canvas>
+
+    <div class="relative z-10">
+
+        <!-- NAVEGACIÓN SUPERIOR -->
+        <nav class="fixed top-0 left-0 w-full flex justify-start md:justify-center gap-2 md:gap-10 z-50 p-3 bg-brand-bg/95 backdrop-blur-md border-b border-white/10 overflow-x-auto no-scrollbar">
+            <a href="/" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-house"></i></div><span class="hidden md:block">Inicio</span></a>
+            <a href="/nosotros" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-shield-halved"></i></div><span class="hidden md:block">Nosotros</span></a>
+            <a href="/servicios" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-layer-group"></i></div><span class="hidden md:block">Servicios</span></a>
+            <a href="/sectores" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-industry"></i></div><span class="hidden md:block">Sectores</span></a>
+            <a href="/contacto" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-satellite-dish"></i></div><span class="hidden md:block">Contacto</span></a>
+        </nav>
+
+        <!-- BREADCRUMBS -->
+        <div class="max-w-5xl mx-auto px-6 pt-4 pb-2 text-sm text-slate-400 fade-in-section">
+            <a href="/" class="hover:text-brand-cyan">Inicio</a> &gt; 
+            <span class="text-brand-cyan font-bold">Pisos Epóxicos en Guadalajara</span>
+        </div>
+
+        <!-- HERO GUADALAJARA -->
+        <section class="py-6 px-6 md:px-12 flex justify-center">
+            <div class="glass-panel fade-in-section">
+                <div class="inline-block bg-brand-cyan/20 border border-brand-cyan/50 text-brand-cyan font-bold px-4 py-1 rounded-full text-sm mb-4">
+                    <i class="fa-solid fa-location-dot mr-2"></i> Cobertura en Jalisco y Occidente
+                </div>
+                <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-6 text-center">
+                    Pisos Epóxicos Industriales en <span class="text-brand-cyan">Guadalajara</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto font-medium text-center mb-8">
+                    Instalación experta de recubrimientos poliméricos y pisos epóxicos de alto desempeño en los principales corredores industriales de Jalisco, incluyendo El Salto, Zapopan, Tlajomulco y Guadalajara Centro. Soluciones duraderas para la industria electrónica, farmacéutica y centros de distribución.
+                </p>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mb-10 border-y border-white/10 py-6">
+                    <div>
+                        <i class="fa-solid fa-microchip text-2xl text-brand-cyan mb-2"></i>
+                        <p class="text-sm font-bold">Electrónica y Alta Tecnología</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-shield-virus text-2xl text-brand-cyan mb-2"></i>
+                        <p class="text-sm font-bold">Grado Farmacéutico</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-shield-halved text-2xl text-brand-cyan mb-2"></i>
+                        <p class="text-sm font-bold">Garantía 18 Meses</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-flask text-2xl text-brand-cyan mb-2"></i>
+                        <p class="text-sm font-bold">Fabricantes Directos</p>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a href="/contacto" class="btn-orange">Agendar Diagnóstico en Planta</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CORREDORES INDUSTRIALES JALISCO -->
+        <section class="py-12 px-6 md:px-12 flex justify-center">
+            <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="fade-in-section">
+                    <h2 class="text-2xl font-bold text-brand-cyan mb-6">Presencia en los Corredores de Jalisco</h2>
+                    <p class="text-slate-300 mb-6">La zona metropolitana de Guadalajara concentra clústeres manufactureros sumamente exigentes en materia de control estático, asepsia y resistencia al tráfico logístico:</p>
+                    <ul class="space-y-4 text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-brand-cyan mt-1"></i>
+                            <div><strong class="text-white">Corredor El Salto:</strong> Alta concentración de industria química, alimentaria y metalmecánica. Instalamos sistemas epóxicos y de poliuretano cementicio resistentes a químicos agresivos.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-brand-cyan mt-1"></i>
+                            <div><strong class="text-white">Zapopan y Parque Montenegro:</strong> Naves de manufactura ligera y CEDIS logísticos que requieren pisos monolíticos sin polvo y de rápido mantenimiento.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-check text-brand-cyan mt-1"></i>
+                            <div><strong class="text-white">Tlajomulco de Zúñiga:</strong> Expansión masiva de centros de distribución. Aplicaciones optimizadas para soportar el rodamiento intensivo de montacargas pesados.</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-slate-900/80 rounded-2xl border border-brand-cyanGlow/40 p-8 flex flex-col justify-center fade-in-section shadow-xl">
+                    <i class="fa-solid fa-industry text-4xl text-brand-cyan mb-4"></i>
+                    <h3 class="text-xl font-bold text-white mb-4">Ingeniería Directa en el Occidente</h3>
+                    <p class="text-slate-400 text-sm mb-4">
+                        Al ser fabricantes y desarrolladores de nuestra propia tecnología de resinas, evitamos los sobreprecios de intermediarios en Jalisco.
+                    </p>
+                    <p class="text-slate-400 text-sm">
+                        Evaluamos la humedad del firme y las condiciones específicas de carga de su planta para ofrecerle una solución a la medida respaldada por nuestra garantía directa de 18 meses por escrito.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN FAQ GUADALAJARA (SCHEMA) -->
+        <section class="py-12 px-6 md:px-12 flex justify-center">
+            <div class="glass-panel fade-in-section text-left">
+                <h2 class="text-3xl font-bold text-brand-cyan mb-8 text-center">Preguntas Frecuentes: Pisos Epóxicos en Guadalajara</h2>
+                
+                <div class="space-y-6 max-w-4xl mx-auto">
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Atienden proyectos en el corredor industrial de El Salto?</h3>
+                        <p class="text-slate-300">Sí. Desplazamos cuadrillas técnicas especializadas y equipos de desbaste mecánico de alta capacidad hacia El Salto, Zapopan y toda el área metropolitana de Guadalajara para ejecutar proyectos llave en mano.</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Cuentan con opciones de pisos disipativos o antiestáticos (ESD) para la industria electrónica?</h3>
+                        <p class="text-slate-300">Así es. Para el clúster de alta tecnología en Jalisco, formulamos sistemas epóxicos conductivos y disipativos que controlan las descargas electrostáticas, protegiendo componentes electrónicos sensibles durante su manufactura y ensamblaje.</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Cuál es el tiempo de ejecución para una nave de 1,000 m²?</h3>
+                        <p class="text-slate-300">Gracias a nuestros métodos de preparación mecánica y curado acelerado, un proyecto estándar de 1,000 m² puede completarse en una ventana de fin de semana o durante paros programados, garantizando cero interferencia con su operación logística.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- DATOS ESTRUCTURADOS SCHEMA (SEO LOCAL GUADALAJARA) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "name": "ALTEK Soluciones Integrales - Sucursal Occidente / Guadalajara",
+          "telephone": "+525535820734",
+          "url": "https://www.altekrecubrimientos.com/pisos-epoxicos-guadalajara",
+          "areaServed": [
+            { "@type": "City", "name": "Guadalajara" },
+            { "@type": "City", "name": "Zapopan" },
+            { "@type": "City", "name": "El Salto" },
+            { "@type": "City", "name": "Tlajomulco de Zúñiga" }
+          ],
+          "description": "Fabricación y aplicación de pisos epóxicos industriales y sistemas disipativos ESD para la industria electrónica y manufactura en Jalisco."
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Atienden proyectos en el corredor industrial de El Salto?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sí, desplazamos cuadrillas técnicas a El Salto, Zapopan y toda el área metropolitana de Guadalajara."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cuentan con opciones de pisos disipativos o antiestáticos (ESD) para la industria electrónica?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Formulamos sistemas epóxicos conductivos y disipativos que controlan descargas electrostáticas para el sector de alta tecnología."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cuál es el tiempo de ejecución para una nave de 1,000 m²?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Se puede completar en una ventana de fin de semana o paros programados para asegurar cero interferencia operativa."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        class Particle {
+            constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; this.radius = Math.random() * 2 + 1; }
+            update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width) this.vx *= -1; if (this.y < 0 || this.y > canvas.height) this.vy *= -1; }
+            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fillStyle = 'rgba(0, 212, 255, 0.4)'; ctx.fill(); }
+        }
+        for (let i = 0; i < 70; i++) particles.push(new Particle());
+        function animate() {
+            let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 50, canvas.width/2, canvas.height/2, Math.max(canvas.width, canvas.height));
+            gradient.addColorStop(0, '#0F172A'); gradient.addColorStop(1, '#08111F');
+            ctx.fillStyle = gradient; ctx.fillRect(0, 0, canvas.width, canvas.height);       
+            particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate);
+        }
+        animate();
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
