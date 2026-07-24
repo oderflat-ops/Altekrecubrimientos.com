@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- METADATOS B2B OPTIMIZADOS PARA SEO -->
+    <title>Nosotros | ALTEK - Fabricantes y Especialistas en Pisos Industriales</title>
+    <meta name="description" content="Desde 2002, ALTEK desarrolla soluciones integrales en pisos poliméricos y poliuretano espreado. Fabricantes directos con personal de 24 años de experiencia.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CONFIGURACIÓN DE TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#08111F',
+                            cyan: '#00D4FF',
+                            cyanGlow: 'rgba(0, 212, 255, 0.5)',
+                            orange: '#F57C00',
+                            glass: 'rgba(16, 24, 39, 0.75)',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel {
+                @apply bg-brand-glass backdrop-blur-md border border-brand-cyanGlow rounded-3xl p-8 md:p-12 w-full max-w-5xl shadow-[0_20px_50px_rgba(0,0,0,0.6)];
+            }
+            .nav-link {
+                @apply flex flex-col items-center gap-1 text-slate-300 hover:text-brand-cyan transition-all text-[0.7rem] font-medium;
+            }
+            .nav-icon {
+                @apply w-9 h-9 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-lg transition-all;
+            }
+            .nav-link:hover .nav-icon, .nav-link.active .nav-icon {
+                @apply shadow-[0_0_15px_#00D4FF] border-brand-cyan -translate-y-1 scale-110 text-brand-cyan;
+            }
+            .card-b2b {
+                @apply bg-slate-900/90 p-8 rounded-2xl border border-brand-cyanGlow/40 text-left transition-all hover:-translate-y-2 hover:border-brand-cyan/60 hover:bg-white/5 shadow-xl;
+            }
+            .fade-in-section {
+                @apply opacity-0 translate-y-10 blur-sm transition-all duration-700 ease-out;
+            }
+            .fade-in-section.is-visible {
+                @apply opacity-100 translate-y-0 blur-none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-white overflow-x-hidden pt-24 pb-20">
+
+    <!-- LIENZO DE PARTÍCULAS -->
+    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"></canvas>
+
+    <div class="relative z-10">
+
+        <!-- NAVEGACIÓN SUPERIOR MULTI-PÁGINA -->
+        <nav class="fixed top-0 left-0 w-full flex justify-start md:justify-center gap-2 md:gap-10 z-50 p-3 bg-brand-bg/95 backdrop-blur-md border-b border-white/10 overflow-x-auto no-scrollbar">
+            <a href="/" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-house"></i></div><span class="hidden md:block">Inicio</span></a>
+            <a href="/nosotros" class="nav-link active"><div class="nav-icon"><i class="fa-solid fa-shield-halved"></i></div><span class="hidden md:block">Nosotros</span></a>
+            <a href="/servicios" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-layer-group"></i></div><span class="hidden md:block">Servicios</span></a>
+            <a href="/sectores" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-industry"></i></div><span class="hidden md:block">Sectores</span></a>
+            <a href="/proceso" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-gears"></i></div><span class="hidden md:block">Proceso</span></a>
+            <a href="/proyectos" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-camera-retro"></i></div><span class="hidden md:block">Proyectos</span></a>
+            <a href="/contacto" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-satellite-dish"></i></div><span class="hidden md:block">Contacto</span></a>
+        </nav>
+
+        <!-- HEADER HISTORIA -->
+        <section class="min-h-[60vh] flex items-center justify-center p-6 md:p-12">
+            <div class="glass-panel fade-in-section text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6">
+                    Soluciones integrales desde <span class="text-brand-cyan">2002</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+                    Ante la inminente necesidad de la industria por contar con soluciones rápidas y eficientes para reestablecer pisos de concreto sometidos a trabajo rudo, fundamos ALTEK. Nuestro objetivo desde el primer día ha sido claro: desarrollar soluciones integrales para proteger y embellecer las instalaciones de su planta, cuidando a su personal, su maquinaria y la higiene de sus procesos.
+                </p>
+            </div>
+        </section>
+
+        <!-- EL DIFERENCIADOR ALTEK -->
+        <section class="py-12 px-6 md:px-12 flex justify-center">
+            <div class="max-w-6xl w-full">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Fabricantes -->
+                    <div class="card-b2b flex flex-col justify-center fade-in-section">
+                        <i class="fa-solid fa-flask text-5xl text-brand-cyan mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-4">Fabricamos Nuestros Sistemas</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            No somos simples aplicadores o revendedores. En ALTEK fabricamos nuestros propios sistemas poliméricos. Esto nos permite garantizar la máxima calidad de la resina desde el laboratorio hasta la superficie de su planta, entregando una relación precio-calidad insuperable en el mercado.
+                        </p>
+                    </div>
+
+                    <!-- Especialización -->
+                    <div class="card-b2b flex flex-col justify-center fade-in-section">
+                        <i class="fa-solid fa-users-gear text-5xl text-brand-cyan mb-6"></i>
+                        <h3 class="text-2xl font-bold text-white mb-4">Ingeniería y Mano de Obra Calificada</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            Nuestro personal cuenta con una <strong>experiencia promedio de 24 años</strong> en la aplicación de pisos poliméricos, pinturas y aislamiento de poliuretano. Esta trayectoria nos ha permitido destacar sobre la competencia gracias a nuestro compromiso, lealtad y ejecución impecable en campo.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- VALOR Y RETORNO DE INVERSIÓN (ROI) -->
+        <section class="py-12 px-6 md:px-12 flex justify-center">
+            <div class="glass-panel fade-in-section">
+                <h2 class="text-3xl font-bold text-brand-cyan mb-8 text-center">Protegemos su Inversión Industrial</h2>
+                <p class="text-slate-300 text-center max-w-3xl mx-auto mb-10 text-lg">
+                    Implementar un sistema ALTEK va más allá de renovar una superficie. Nuestras soluciones están diseñadas financieramente para disminuir la carga técnica, administrativa y de operación de su empresa.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-black/20 p-6 rounded-xl border border-white/5 text-center">
+                        <i class="fa-solid fa-screwdriver-wrench text-3xl text-brand-orange mb-4"></i>
+                        <h4 class="font-bold text-white text-lg mb-2">Reducción de Mantenimiento</h4>
+                        <p class="text-slate-400 text-sm">Disminuya drásticamente los costos de reparación de equipos y montacargas al eliminar baches y desniveles en sus trayectos.</p>
+                    </div>
+                    <div class="bg-black/20 p-6 rounded-xl border border-white/5 text-center">
+                        <i class="fa-solid fa-user-shield text-3xl text-brand-orange mb-4"></i>
+                        <h4 class="font-bold text-white text-lg mb-2">Prevención de Accidentes</h4>
+                        <p class="text-slate-400 text-sm">Sistemas antiderrapantes y señalización integrada para evitar siniestros laborales derivados del mal estado del piso.</p>
+                    </div>
+                    <div class="bg-black/20 p-6 rounded-xl border border-white/5 text-center">
+                        <i class="fa-solid fa-temperature-arrow-down text-3xl text-brand-orange mb-4"></i>
+                        <h4 class="font-bold text-white text-lg mb-2">Eficiencia Energética</h4>
+                        <p class="text-slate-400 text-sm">Nuestro poliuretano espreado proporciona una solución conjunta de aislamiento térmico e impermeabilización para cámaras de refrigeración.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NUMERALIA / EXPERIENCIA (Absorbido de la Home anterior) -->
+        <section class="py-12 px-6 md:px-12 flex justify-center">
+            <div class="max-w-5xl w-full text-center fade-in-section">
+                <h2 class="text-2xl font-bold text-brand-cyan mb-8">El Respaldo de ALTEK en Cifras</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/10">
+                        <h3 class="text-3xl font-black text-white mb-1">+24</h3>
+                        <p class="text-brand-cyan text-sm uppercase font-bold">Años de Trayectoria</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/10">
+                        <h3 class="text-3xl font-black text-white mb-1">+500</h3>
+                        <p class="text-brand-cyan text-sm uppercase font-bold">Proyectos Entregados</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/10">
+                        <h3 class="text-3xl font-black text-white mb-1">+800k</h3>
+                        <p class="text-brand-cyan text-sm uppercase font-bold">m² Recubiertos</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/10">
+                        <h3 class="text-3xl font-black text-white mb-1">100%</h3>
+                        <p class="text-brand-cyan text-sm uppercase font-bold">Fabricación Propia</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- DATOS ESTRUCTURADOS SCHEMA.ORG -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "ALTEK Soluciones Integrales",
+        "foundingDate": "2002",
+        "description": "Fabricantes y aplicadores de sistemas de pisos poliméricos y poliuretano espreado industrial con 24 años de experiencia.",
+        "brand": "ALTEK"
+      }
+    }
+    </script>
+
+    <script>
+        // Animación de partículas y scroll
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize); resize();
+
+        class Particle {
+            constructor() { 
+                this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; 
+                this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; 
+                this.radius = Math.random() * 2 + 1; 
+            }
+            update() { 
+                this.x += this.vx; this.y += this.vy; 
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1; 
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1; 
+            }
+            draw() { 
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); 
+                ctx.fillStyle = 'rgba(0, 212, 255, 0.4)'; ctx.fill(); 
+            }
+        }
+        for (let i = 0; i < 70; i++) particles.push(new Particle());
+
+        function animate() {
+            let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 50, canvas.width/2, canvas.height/2, Math.max(canvas.width, canvas.height));
+            gradient.addColorStop(0, '#0F172A'); gradient.addColorStop(1, '#08111F');
+            ctx.fillStyle = gradient; ctx.fillRect(0, 0, canvas.width, canvas.height);       
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
