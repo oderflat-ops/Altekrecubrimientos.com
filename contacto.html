@@ -75,24 +75,54 @@
                                 <label class="block text-sm font-bold text-white mb-1">WhatsApp / Teléfono</label>
                                 <input type="tel" name="telefono" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-brand-cyan transition-colors">
                             </div>
+                            
+                            <!-- Tipo de Necesidad (Seleccionable) -->
                             <div class="col-span-1 md:col-span-2">
                                 <label class="block text-sm font-bold text-white mb-1">Tipo de Necesidad</label>
                                 <select name="proyecto" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-slate-800 focus:outline-none focus:border-brand-cyan transition-colors">
                                     <option value="" disabled selected>Seleccione el servicio requerido...</option>
                                     <option value="Pisos Epóxicos">Pisos Epóxicos Industriales</option>
-                                    <option value="Rehabilitación">Rehabilitación y Bacheo</option>
-                                    <option value="Poliuretano">Aislamiento de Poliuretano</option>
-                                    <option value="Grado Alimenticio">Piso Grado Alimenticio</option>
+                                    <option value="Rehabilitación y Bacheo">Rehabilitación y Bacheo</option>
+                                    <option value="Aislamiento de Poliuretano">Aislamiento de Poliuretano</option>
+                                    <option value="Piso Grado Alimenticio">Piso Grado Alimenticio</option>
                                 </select>
                             </div>
+
+                            <!-- Giro de la Empresa (Seleccionable) -->
+                            <div>
+                                <label class="block text-sm font-bold text-white mb-1">Giro de la Empresa</label>
+                                <select name="giro" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-slate-800 focus:outline-none focus:border-brand-cyan transition-colors">
+                                    <option value="" disabled selected>Seleccione el sector...</option>
+                                    <option value="Automotriz / Aeroespacial">Automotriz / Aeroespacial</option>
+                                    <option value="Logística / CEDIS">Logística / CEDIS</option>
+                                    <option value="Alimentos y Bebidas">Alimentos y Bebidas</option>
+                                    <option value="Metalmecánica / Tratamientos">Metalmecánica / Tratamiento de Superficies</option>
+                                    <option value="Inyección de Plásticos">Inyección de Plásticos / Manufactura</option>
+                                    <option value="Cámaras de Refrigeración">Cámaras de Refrigeración</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+
+                            <!-- Metraje Aproximado (Seleccionable) -->
+                            <div>
+                                <label class="block text-sm font-bold text-white mb-1">Metraje Aproximado</label>
+                                <select name="metraje" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-slate-800 focus:outline-none focus:border-brand-cyan transition-colors">
+                                    <option value="" disabled selected>Seleccione el área...</option>
+                                    <option value="Menos de 100 m2">Menos de 100 m²</option>
+                                    <option value="100 - 500 m2">De 100 a 500 m²</option>
+                                    <option value="500 - 1000 m2">De 500 a 1,000 m²</option>
+                                    <option value="1000 - 3000 m2">De 1,000 a 3,000 m²</option>
+                                    <option value="Más de 3000 m2">Mayor a 3,000 m²</option>
+                                </select>
+                            </div>
+
                             <div class="col-span-1 md:col-span-2">
-                                <label class="block text-sm font-bold text-white mb-1">Detalles del proyecto (Metraje aproximado, giro, etc.)</label>
-                                <textarea name="mensaje" rows="3" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-brand-cyan transition-colors"></textarea>
+                                <label class="block text-sm font-bold text-white mb-1">Comentarios adicionales (Opcional)</label>
+                                <textarea name="mensaje" rows="2" class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-brand-cyan transition-colors"></textarea>
                             </div>
                             <div class="col-span-1 md:col-span-2 mt-2">
                                 <button id="submit-btn" type="submit" class="w-full p-4 bg-brand-orange text-white font-extrabold text-lg uppercase rounded-lg hover:shadow-[0_0_20px_rgba(245,124,0,0.5)] hover:bg-[#FF8F24] transition-all">Enviar Solicitud</button>
                             </div>
-                            <!-- Mensaje de éxito o error -->
                             <div id="form-status" class="col-span-1 md:col-span-2 text-center font-bold text-sm hidden mt-2"></div>
                         </form>
                     </div>
@@ -106,10 +136,10 @@
         document.getElementById('altek-hubspot-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // --- INSTRUCCIÓN: REEMPLAZA ESTOS DOS VALORES CON TUS IDs ---
+            // --- REEMPLAZA ESTOS DOS VALORES CON TUS IDs DE HUBSPOT ---
             const portalId = 'TU_PORTAL_ID_AQUI'; 
             const formId = 'TU_FORM_ID_AQUI';
-            // ------------------------------------------------------------
+            // ----------------------------------------------------------
 
             const btn = document.getElementById('submit-btn');
             const statusDiv = document.getElementById('form-status');
@@ -121,10 +151,12 @@
             const empresa = document.querySelector('input[name="empresa"]').value;
             const telefono = document.querySelector('input[name="telefono"]').value;
             const proyecto = document.querySelector('select[name="proyecto"]').value;
+            const giro = document.querySelector('select[name="giro"]').value;
+            const metraje = document.querySelector('select[name="metraje"]').value;
             const mensaje = document.querySelector('textarea[name="mensaje"]').value;
 
-            // Combinamos el servicio de interés con el mensaje para no tener que crear un campo personalizado en HubSpot y asegurar que todo entre en "message".
-            const mensajeCompleto = `[Servicio de Interés: ${proyecto}] | Detalles del cliente: ${mensaje}`;
+            // Empaquetamos la información de los selects en el campo de mensaje para HubSpot
+            const mensajeCompleto = `[Servicio: ${proyecto}] | [Sector: ${giro}] | [Metraje: ${metraje}] \n\nComentarios: ${mensaje || 'Sin comentarios adicionales.'}`;
 
             const data = {
                 fields: [
@@ -171,13 +203,25 @@
         });
 
         // Partículas (Background)
-        const canvas=document.getElementById('bg-canvas'),ctx=canvas.getContext('2d');let particles=[];
-        window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
-        canvas.width=window.innerWidth;canvas.height=window.innerHeight;
-        class Particle{constructor(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.vx=(Math.random()-0.5)*0.4;this.vy=(Math.random()-0.5)*0.4;this.radius=Math.random()*2+1;}update(){this.x+=this.vx;this.y+=this.vy;if(this.x<0||this.x>canvas.width)this.vx*=-1;if(this.y<0||this.y>canvas.height)this.vy*=-1;}draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);ctx.fillStyle='rgba(0,212,255,0.4)';ctx.fill();}}
-        for(let i=0;i<70;i++)particles.push(new Particle());
-        function animate(){let g=ctx.createRadialGradient(canvas.width/2,canvas.height/2,50,canvas.width/2,canvas.height/2,Math.max(canvas.width,canvas.height));g.addColorStop(0,'#0F172A');g.addColorStop(1,'#08111F');ctx.fillStyle=g;ctx.fillRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(animate);} animate();
-        const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('is-visible');});},{threshold:0.1});document.querySelectorAll('.fade-in-section').forEach(el=>observer.observe(el));
+        const canvas = document.getElementById('bg-canvas'), ctx = canvas.getContext('2d');
+        let particles = [];
+        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        class Particle {
+            constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; this.radius = Math.random() * 2 + 1; }
+            update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width) this.vx *= -1; if (this.y < 0 || this.y > canvas.height) this.vy *= -1; }
+            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fillStyle = 'rgba(0, 212, 255, 0.4)'; ctx.fill(); }
+        }
+        for (let i = 0; i < 70; i++) particles.push(new Particle());
+        function animate() {
+            let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 50, canvas.width/2, canvas.height/2, Math.max(canvas.width, canvas.height));
+            gradient.addColorStop(0, '#0F172A'); gradient.addColorStop(1, '#08111F');
+            ctx.fillStyle = gradient; ctx.fillRect(0, 0, canvas.width, canvas.height);       
+            particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate);
+        }
+        animate();
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
