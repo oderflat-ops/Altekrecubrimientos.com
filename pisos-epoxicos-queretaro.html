@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- METADATOS B2B OPTIMIZADOS PARA QUERÉTARO Y AUTOMOTRIZ -->
+    <title>Pisos Epóxicos en Querétaro | Fabricantes para Sector Automotriz | ALTEK</title>
+    <meta name="description" content="Instalación y fabricación de pisos epóxicos industriales en Querétaro (El Marqués, PIQ, San Juan del Río). Especialistas en el sector automotriz y manufactura.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { bg: '#08111F', cyan: '#00D4FF', cyanGlow: 'rgba(0, 212, 255, 0.5)', orange: '#F57C00', glass: 'rgba(16, 24, 39, 0.75)' }
+                    },
+                    fontFamily: { sans: ['Segoe UI', 'Helvetica', 'Arial', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel { @apply bg-brand-glass backdrop-blur-md border border-brand-cyanGlow rounded-3xl p-8 md:p-12 w-full max-w-5xl mx-auto shadow-[0_20px_50px_rgba(0,0,0,0.6)]; }
+            .nav-link { @apply flex flex-col items-center gap-1 text-slate-300 hover:text-brand-cyan transition-all text-[0.7rem] font-medium; }
+            .nav-icon { @apply w-9 h-9 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-lg transition-all; }
+            .nav-link:hover .nav-icon, .nav-link.active .nav-icon { @apply shadow-[0_0_15px_#00D4FF] border-brand-cyan -translate-y-1 scale-110 text-brand-cyan; }
+            .fade-in-section { @apply opacity-0 translate-y-10 blur-sm transition-all duration-700 ease-out; }
+            .fade-in-section.is-visible { @apply opacity-100 translate-y-0 blur-none; }
+            .btn-orange { @apply inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-extrabold uppercase tracking-wide bg-brand-orange rounded-full transition-all hover:bg-[#FF8F24] hover:scale-105 hover:shadow-[0_0_25px_rgba(245,124,0,0.6)]; }
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-white overflow-x-hidden pt-24 pb-20">
+
+    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"></canvas>
+
+    <div class="relative z-10">
+
+        <!-- NAVEGACIÓN SUPERIOR -->
+        <nav class="fixed top-0 left-0 w-full flex justify-start md:justify-center gap-2 md:gap-10 z-50 p-3 bg-brand-bg/95 backdrop-blur-md border-b border-white/10 overflow-x-auto no-scrollbar">
+            <a href="/" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-house"></i></div><span class="hidden md:block">Inicio</span></a>
+            <a href="/nosotros" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-shield-halved"></i></div><span class="hidden md:block">Nosotros</span></a>
+            <a href="/servicios" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-layer-group"></i></div><span class="hidden md:block">Servicios</span></a>
+            <a href="/sectores" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-industry"></i></div><span class="hidden md:block">Sectores</span></a>
+            <a href="/contacto" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-satellite-dish"></i></div><span class="hidden md:block">Contacto</span></a>
+        </nav>
+
+        <!-- BREADCRUMBS -->
+        <div class="max-w-5xl mx-auto px-6 pt-4 pb-2 text-sm text-slate-400 fade-in-section">
+            <a href="/" class="hover:text-brand-cyan">Inicio</a> &gt; 
+            <span class="text-brand-cyan font-bold">Pisos Epóxicos en Querétaro</span>
+        </div>
+
+        <!-- HERO QUERÉTARO (Enfoque Automotriz) -->
+        <section class="py-6 px-6 md:px-12 flex justify-center">
+            <div class="glass-panel fade-in-section border-brand-orange/40">
+                <div class="inline-block bg-brand-orange/20 border border-brand-orange/50 text-brand-orange font-bold px-4 py-1 rounded-full text-sm mb-4">
+                    <i class="fa-solid fa-industry mr-2"></i> Especialistas en El Bajío
+                </div>
+                <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-6 text-center">
+                    Pisos Epóxicos Industriales en <span class="text-brand-cyan">Querétaro</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto font-medium text-center mb-8">
+                    Fabricación e instalación de sistemas poliméricos de alta resistencia diseñados para soportar el rigor del sector automotriz, aeroespacial y manufacturero en el Parque Industrial Querétaro (PIQ), El Marqués, Bernardo Quintana y San Juan del Río.
+                </p>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mb-10 border-y border-white/10 py-6">
+                    <div>
+                        <i class="fa-solid fa-car text-2xl text-brand-cyan mb-2"></i>
+                        <p class="text-sm font-bold">Sector Automotriz</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-plane-departure text-2xl text-brand-cyan mb-2"></i>
+                        <p class="text-sm font-bold">Aeroespacial</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-flask text-2xl text-brand-orange mb-2"></i>
+                        <p class="text-sm font-bold text-brand-orange">Fabricantes Directos</p>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-check-double text-2xl text-brand-cyan mb-2"></i>
+                        <p class="text-sm font-bold">Garantía 18 Meses</p>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <a href="/contacto" class="btn-orange">Solicitar Levantamiento en Planta</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- EL ATAQUE DIRECTO: FABRICANTES VS APLICADORES -->
+        <section class="py-12 px-6 md:px-12 flex justify-center">
+            <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="bg-black/40 rounded-2xl border border-white/10 p-8 flex flex-col justify-center fade-in-section shadow-xl">
+                    <h2 class="text-2xl font-bold text-brand-cyan mb-6">Por qué la industria queretana exige <span class="text-brand-orange">fabricantes</span>, no revendedores</h2>
+                    <p class="text-slate-300 mb-4 text-sm leading-relaxed">
+                        En ALTEK no somos simples aplicadores que dependen de marcas de resina de terceros. <strong>Nosotros desarrollamos y fabricamos nuestra propia formulación polimérica.</strong>
+                    </p>
+                    <p class="text-slate-300 mb-4 text-sm leading-relaxed">
+                        Esto nos otorga una ventaja técnica insuperable en Querétaro: adaptamos la composición química del recubrimiento epóxico para soportar exactamente los fluidos mecánicos, aceites y el tráfico pesado logístico específico de su línea de ensamblaje o CEDIS.
+                    </p>
+                    <div class="mt-4 bg-brand-cyan/10 border-l-4 border-brand-cyan p-4">
+                        <p class="text-white text-sm font-bold">Cero triangulaciones. La garantía de 18 meses la asume directamente el laboratorio que fabricó el material y el ingeniero que lo aplicó.</p>
+                    </div>
+                </div>
+                
+                <div class="fade-in-section flex flex-col justify-center">
+                    <h3 class="text-xl font-bold text-white mb-6">Soluciones para los Parques Industriales:</h3>
+                    <ul class="space-y-4 text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-map-location-dot text-brand-cyan mt-1"></i>
+                            <div><strong class="text-white">Parque Industrial Querétaro (PIQ):</strong> Sistemas antideslizantes de alta tracción para manufactura pesada y líneas continuas.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-map-location-dot text-brand-cyan mt-1"></i>
+                            <div><strong class="text-white">Corredor El Marqués y Bernardo Quintana:</strong> Pisos epóxicos monolíticos que soportan el tráfico 24/7 de montacargas y transpaletas.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-map-location-dot text-brand-cyan mt-1"></i>
+                            <div><strong class="text-white">San Juan del Río y Pedro Escobedo:</strong> Rehabilitación de firmes agrietados y recubrimientos para la industria metalmecánica y papelera.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN FAQ QUERÉTARO CON SCHEMA -->
+        <section class="py-12 px-6 md:px-12 flex justify-center">
+            <div class="glass-panel fade-in-section text-left">
+                <h2 class="text-3xl font-bold text-brand-cyan mb-8 text-center">Preguntas Frecuentes: Operaciones en Querétaro</h2>
+                
+                <div class="space-y-6 max-w-4xl mx-auto">
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">Mi línea de ensamblaje en El Marqués no puede detenerse, ¿cómo aplican el piso?</h3>
+                        <p class="text-slate-300">Nuestra logística está diseñada para la industria automotriz y de manufactura continua. Ejecutamos la preparación de superficie y la aplicación del sistema epóxico en fines de semana, ventanas nocturnas o paros de mantenimiento programados para asegurar cero impacto en su productividad.</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Cuál es la diferencia entre contratar a un fabricante directo (ALTEK) vs un aplicador tradicional?</h3>
+                        <p class="text-slate-300">Un aplicador tradicional depende del inventario, los costos y las garantías limitadas de una marca de resina externa. Al fabricar nuestra propia materia prima, garantizamos el control de calidad total, reducimos los costos para su planta y respondemos de forma inmediata ante cualquier eventualidad con nuestra garantía directa de 18 meses.</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Sus recubrimientos resisten derrames de aceites, solventes o Skydrol?</h3>
+                        <p class="text-slate-300">Sí. Formulamos sistemas epóxicos y de poliuretano de altísima resistencia química, ideales para talleres de mantenimiento mecánico, hangares aeroespaciales y líneas de inyección de plásticos donde los derrames corrosivos son el día a día.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- DATOS ESTRUCTURADOS SCHEMA PARA SEO LOCAL (QUERÉTARO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "name": "ALTEK Soluciones Integrales - Pisos Epóxicos Querétaro",
+          "image": "https://www.altekrecubrimientos.com/image_4.png",
+          "telephone": "+525535820734",
+          "url": "https://www.altekrecubrimientos.com/pisos-epoxicos-queretaro",
+          "areaServed": [
+            { "@type": "City", "name": "Santiago de Querétaro" },
+            { "@type": "City", "name": "El Marqués" },
+            { "@type": "City", "name": "San Juan del Río" },
+            { "@type": "City", "name": "Pedro Escobedo" }
+          ],
+          "description": "Fabricantes de pisos epóxicos industriales especializados en el sector automotriz, aeroespacial y manufactura en Querétaro y el Bajío."
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Mi línea de ensamblaje en El Marqués no puede detenerse, ¿cómo aplican el piso?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ejecutamos la preparación y aplicación del sistema epóxico en fines de semana, ventanas nocturnas o paros programados para asegurar cero impacto en su productividad."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cuál es la diferencia entre contratar a un fabricante directo (ALTEK) vs un aplicador tradicional?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Garantizamos control de calidad total desde el laboratorio, reducimos costos y respondemos de forma inmediata con garantía de 18 meses, sin intermediarios."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Sus recubrimientos resisten derrames de aceites, solventes o Skydrol?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Formulamos sistemas de altísima resistencia química, ideales para talleres de mantenimiento, hangares aeroespaciales y líneas de inyección."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        class Particle {
+            constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; this.radius = Math.random() * 2 + 1; }
+            update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width) this.vx *= -1; if (this.y < 0 || this.y > canvas.height) this.vy *= -1; }
+            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fillStyle = 'rgba(0, 212, 255, 0.4)'; ctx.fill(); }
+        }
+        for (let i = 0; i < 70; i++) particles.push(new Particle());
+        function animate() {
+            let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 50, canvas.width/2, canvas.height/2, Math.max(canvas.width, canvas.height));
+            gradient.addColorStop(0, '#0F172A'); gradient.addColorStop(1, '#08111F');
+            ctx.fillStyle = gradient; ctx.fillRect(0, 0, canvas.width, canvas.height);       
+            particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate);
+        }
+        animate();
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
