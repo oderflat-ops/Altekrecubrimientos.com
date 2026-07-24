@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- METADATOS B2B OPTIMIZADOS -->
+    <title>Servicios de Recubrimientos y Pisos Industriales | ALTEK</title>
+    <meta name="description" content="Especialistas en pisos epóxicos industriales, sistemas de poliuretano, recubrimientos grado alimenticio y rehabilitación de firmes. Cobertura nacional.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { bg: '#08111F', cyan: '#00D4FF', cyanGlow: 'rgba(0, 212, 255, 0.5)', orange: '#F57C00', glass: 'rgba(16, 24, 39, 0.75)' }
+                    },
+                    fontFamily: { sans: ['Segoe UI', 'Helvetica', 'Arial', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel { @apply bg-brand-glass backdrop-blur-md border border-brand-cyanGlow rounded-3xl p-8 md:p-12 w-full max-w-6xl mx-auto shadow-[0_20px_50px_rgba(0,0,0,0.6)]; }
+            .nav-link { @apply flex flex-col items-center gap-1 text-slate-300 hover:text-brand-cyan transition-all text-[0.7rem] font-medium; }
+            .nav-icon { @apply w-9 h-9 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-lg transition-all; }
+            .nav-link:hover .nav-icon, .nav-link.active .nav-icon { @apply shadow-[0_0_15px_#00D4FF] border-brand-cyan -translate-y-1 scale-110 text-brand-cyan; }
+            .service-card { @apply bg-slate-900/90 p-8 rounded-2xl border border-white/10 text-left transition-all hover:-translate-y-2 hover:border-brand-cyan/60 hover:bg-white/5 shadow-xl flex flex-col h-full; }
+            .fade-in-section { @apply opacity-0 translate-y-10 blur-sm transition-all duration-700 ease-out; }
+            .fade-in-section.is-visible { @apply opacity-100 translate-y-0 blur-none; }
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-white overflow-x-hidden pt-24 pb-20">
+
+    <!-- LIENZO DE PARTÍCULAS (Fondo unificado) -->
+    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"></canvas>
+
+    <div class="relative z-10">
+
+        <!-- NAVEGACIÓN SUPERIOR -->
+        <nav class="fixed top-0 left-0 w-full flex justify-start md:justify-center gap-2 md:gap-10 z-50 p-3 bg-brand-bg/95 backdrop-blur-md border-b border-white/10 overflow-x-auto no-scrollbar">
+            <a href="/" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-house"></i></div><span class="hidden md:block">Inicio</span></a>
+            <a href="/nosotros" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-shield-halved"></i></div><span class="hidden md:block">Nosotros</span></a>
+            <a href="/servicios" class="nav-link active"><div class="nav-icon"><i class="fa-solid fa-layer-group"></i></div><span class="hidden md:block">Servicios</span></a>
+            <a href="/sectores" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-industry"></i></div><span class="hidden md:block">Sectores</span></a>
+            <a href="/proceso" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-gears"></i></div><span class="hidden md:block">Proceso</span></a>
+            <a href="/proyectos" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-camera-retro"></i></div><span class="hidden md:block">Proyectos</span></a>
+            <a href="/contacto" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-satellite-dish"></i></div><span class="hidden md:block">Contacto</span></a>
+        </nav>
+
+        <!-- HEADER SEO (H1 Único y Párrafo de IA) -->
+        <section class="py-12 px-6 md:px-12 flex justify-center">
+            <div class="glass-panel fade-in-section text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6">
+                    Soluciones en <span class="text-brand-cyan">Recubrimientos y Pisos Industriales</span>
+                </h1>
+                <!-- Párrafo estratégico 2-3 líneas para IA / Google -->
+                <p class="text-lg text-slate-300 max-w-4xl mx-auto font-medium">
+                    En ALTEK diseñamos, fabricamos e instalamos sistemas poliméricos de alta resistencia para ambientes críticos. Nuestras soluciones están creadas para gerentes de mantenimiento que requieren proteger su infraestructura, cumplir auditorías sanitarias y garantizar operaciones seguras sin detener su producción.
+                </p>
+                <div class="mt-6 flex justify-center gap-6 text-brand-cyan font-bold text-sm">
+                    <span><i class="fa-solid fa-check mr-2"></i>+24 Años de Experiencia</span>
+                    <span><i class="fa-solid fa-check mr-2"></i>Garantía de 18 Meses</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- EL HUB DE SERVICIOS (Menú de navegación a páginas secundarias) -->
+        <section class="py-10 px-6 md:px-12 flex justify-center">
+            <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Servicio 1: Epóxicos -->
+                <div class="service-card fade-in-section">
+                    <i class="fa-solid fa-layer-group text-5xl text-brand-cyan mb-6"></i>
+                    <h2 class="text-2xl font-bold text-white mb-4">Pisos Epóxicos Industriales</h2>
+                    <p class="text-slate-400 mb-6 flex-grow">
+                        Sistemas monolíticos de extrema dureza diseñados para resistir tráfico continuo de montacargas, arrastre de pallets y desgaste abrasivo en naves logísticas y de manufactura.
+                    </p>
+                    <a href="/servicios/pisos-epoxicos-industriales" class="inline-block mt-auto text-brand-cyan font-bold hover:text-white transition-colors uppercase text-sm tracking-wide">
+                        Ver especificaciones técnicas &rarr;
+                    </a>
+                </div>
+
+                <!-- Servicio 2: Poliuretano -->
+                <div class="service-card fade-in-section">
+                    <i class="fa-solid fa-temperature-arrow-down text-5xl text-brand-cyan mb-6"></i>
+                    <h2 class="text-2xl font-bold text-white mb-4">Sistemas de Poliuretano Espreado</h2>
+                    <p class="text-slate-400 mb-6 flex-grow">
+                        Recubrimiento termoaislante e impermeabilizante avanzado. La protección definitiva contra choque térmico y fugas de energía en cámaras de refrigeración y techumbres industriales.
+                    </p>
+                    <a href="/servicios/sistemas-poliuretano-espreado" class="inline-block mt-auto text-brand-cyan font-bold hover:text-white transition-colors uppercase text-sm tracking-wide">
+                        Ver especificaciones técnicas &rarr;
+                    </a>
+                </div>
+
+                <!-- Servicio 3: Rehabilitación -->
+                <div class="service-card fade-in-section">
+                    <i class="fa-solid fa-hammer text-5xl text-brand-cyan mb-6"></i>
+                    <h2 class="text-2xl font-bold text-white mb-4">Rehabilitación de Pisos Industriales</h2>
+                    <p class="text-slate-400 mb-6 flex-grow">
+                        Cirugía estructural para firmes de concreto dañados. Tratamiento de grietas vivas, bacheo profundo, renivelación y calafateo de juntas constructivas para evitar el reemplazo total de la losa.
+                    </p>
+                    <a href="/servicios/rehabilitacion-pisos-industriales" class="inline-block mt-auto text-brand-cyan font-bold hover:text-white transition-colors uppercase text-sm tracking-wide">
+                        Ver especificaciones técnicas &rarr;
+                    </a>
+                </div>
+
+                <!-- Servicio 4: Grado Alimenticio -->
+                <div class="service-card fade-in-section">
+                    <i class="fa-solid fa-wheat-awn text-5xl text-brand-cyan mb-6"></i>
+                    <h2 class="text-2xl font-bold text-white mb-4">Pisos de Grado Alimenticio</h2>
+                    <p class="text-slate-400 mb-6 flex-grow">
+                        Superficies 100% lavables, asépticas y libres de porosidad con curvas sanitarias integradas. Soluciones rigurosamente formuladas para aprobar auditorías de la NOM-251, COFEPRIS y FDA.
+                    </p>
+                    <a href="/servicios/pisos-grado-alimenticio" class="inline-block mt-auto text-brand-cyan font-bold hover:text-white transition-colors uppercase text-sm tracking-wide">
+                        Ver especificaciones técnicas &rarr;
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN FAQ B2B -->
+        <section class="py-12 px-6 md:px-12 flex justify-center">
+            <div class="glass-panel fade-in-section text-left">
+                <h2 class="text-3xl font-bold text-brand-cyan mb-8 text-center">Preguntas Frecuentes sobre Nuestros Servicios</h2>
+                
+                <div class="space-y-6 max-w-4xl mx-auto">
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Qué sucede si no sé qué tipo de recubrimiento necesita mi planta?</h3>
+                        <p class="text-slate-300">No se preocupe. Antes de enviar cualquier propuesta, un ingeniero de ALTEK acudirá a su planta para realizar un diagnóstico técnico físico sin costo, evaluando la humedad, el estado del firme y los agentes químicos presentes.</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Aplican sus recubrimientos sobre losas de concreto viejas o contaminadas?</h3>
+                        <p class="text-slate-300">Sí. Nuestro servicio incluye la rehabilitación del piso industrial. Realizamos un desbaste mecánico profundo (escarificación) para eliminar contaminantes y abrimos el poro del concreto viejo antes de aplicar cualquier resina.</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Cuánto tiempo de inactividad requiere la instalación de un piso epóxico?</h3>
+                        <p class="text-slate-300">Nos adaptamos a sus ventanas logísticas. Frecuentemente ejecutamos proyectos completos en un solo fin de semana o durante sus paros técnicos programados, asegurando cero interferencia con su producción.</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Sus servicios incluyen garantía?</h3>
+                        <p class="text-slate-300">Absolutamente. Todos nuestros sistemas (epóxicos, grado alimenticio y poliuretano) están respaldados por una garantía escrita de 18 meses, un beneficio directo de ser fabricantes de nuestra propia materia prima.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- DATOS ESTRUCTURADOS SCHEMA.ORG PARA SERVICIOS (IA) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "serviceType": "Recubrimientos y Pisos Industriales",
+          "provider": {
+            "@type": "LocalBusiness",
+            "name": "ALTEK Soluciones Integrales"
+          },
+          "areaServed": "MX",
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Catálogo de Sistemas ALTEK",
+            "itemListElement": [
+              {
+                "@type": "OfferCatalog",
+                "name": "Pisos Epóxicos Industriales"
+              },
+              {
+                "@type": "OfferCatalog",
+                "name": "Sistemas de Poliuretano Espreado"
+              },
+              {
+                "@type": "OfferCatalog",
+                "name": "Rehabilitación de Pisos Industriales"
+              },
+              {
+                "@type": "OfferCatalog",
+                "name": "Pisos de Grado Alimenticio"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué sucede si no sé qué tipo de recubrimiento necesita mi planta?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Un ingeniero de ALTEK acudirá a su planta para realizar un diagnóstico técnico físico sin costo, evaluando la humedad, el estado del firme y los agentes químicos presentes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Aplican sus recubrimientos sobre losas de concreto viejas o contaminadas?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sí, realizamos un desbaste mecánico profundo para eliminar contaminantes y rehabilitamos el piso antes de aplicar la resina."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cuánto tiempo de inactividad requiere la instalación de un piso epóxico?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Nos adaptamos a sus ventanas logísticas, ejecutando frecuentemente en un solo fin de semana o durante paros programados para asegurar cero interferencia."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Sus servicios incluyen garantía?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Todos nuestros sistemas están respaldados por una garantía escrita de 18 meses."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <script>
+        // Animación fondo
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        class Particle {
+            constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; this.radius = Math.random() * 2 + 1; }
+            update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width) this.vx *= -1; if (this.y < 0 || this.y > canvas.height) this.vy *= -1; }
+            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fillStyle = 'rgba(0, 212, 255, 0.4)'; ctx.fill(); }
+        }
+        for (let i = 0; i < 70; i++) particles.push(new Particle());
+        function animate() {
+            let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 50, canvas.width/2, canvas.height/2, Math.max(canvas.width, canvas.height));
+            gradient.addColorStop(0, '#0F172A'); gradient.addColorStop(1, '#08111F');
+            ctx.fillStyle = gradient; ctx.fillRect(0, 0, canvas.width, canvas.height);       
+            particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Scroll Observer
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
