@@ -76,45 +76,48 @@
                                 <input type="tel" name="telefono" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-brand-cyan transition-colors">
                             </div>
                             
-                            <!-- Tipo de Necesidad (Seleccionable) -->
-                            <div class="col-span-1 md:col-span-2">
-                                <label class="block text-sm font-bold text-white mb-1">Tipo de Necesidad</label>
-                                <select name="proyecto" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-slate-800 focus:outline-none focus:border-brand-cyan transition-colors">
-                                    <option value="" disabled selected>Seleccione el servicio requerido...</option>
-                                    <option value="Pisos Epóxicos">Pisos Epóxicos Industriales</option>
-                                    <option value="Rehabilitación y Bacheo">Rehabilitación y Bacheo</option>
-                                    <option value="Aislamiento de Poliuretano">Aislamiento de Poliuretano</option>
-                                    <option value="Piso Grado Alimenticio">Piso Grado Alimenticio</option>
-                                </select>
-                            </div>
+                         <!-- Tipo de Necesidad (Seleccionable) -->
+                        <div class="col-span-1 md:col-span-2">
+                            <label class="block text-sm font-bold text-white mb-1">Tipo de Necesidad</label>
+                            <select name="proyecto" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-brand-cyan transition-colors">
+                                <option value="" disabled selected class="bg-slate-900 text-slate-400">Seleccione el servicio requerido...</option>
+                                <option value="Pisos Epóxicos" class="bg-slate-900 text-white">Pisos Epóxicos Industriales</option>
+                                <option value="Rehabilitación y Bacheo" class="bg-slate-900 text-white">Rehabilitación y Bacheo</option>
+                                <option value="Aislamiento de Poliuretano" class="bg-slate-900 text-white">Aislamiento de Poliuretano</option>
+                                <option value="Piso Grado Alimenticio" class="bg-slate-900 text-white">Piso Grado Alimenticio</option>
+                            </select>
+                        </div>
 
-                            <!-- Giro de la Empresa (Seleccionable) -->
-                            <div>
-                                <label class="block text-sm font-bold text-white mb-1">Giro de la Empresa</label>
-                                <select name="giro" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-slate-800 focus:outline-none focus:border-brand-cyan transition-colors">
-                                    <option value="" disabled selected>Seleccione el sector...</option>
-                                    <option value="Automotriz / Aeroespacial">Automotriz / Aeroespacial</option>
-                                    <option value="Logística / CEDIS">Logística / CEDIS</option>
-                                    <option value="Alimentos y Bebidas">Alimentos y Bebidas</option>
-                                    <option value="Metalmecánica / Tratamientos">Metalmecánica / Tratamiento de Superficies</option>
-                                    <option value="Inyección de Plásticos">Inyección de Plásticos / Manufactura</option>
-                                    <option value="Cámaras de Refrigeración">Cámaras de Refrigeración</option>
-                                    <option value="Otro">Otro</option>
-                                </select>
-                            </div>
+                        <!-- Giro de la Empresa (Seleccionable) -->
+                        <div>
+                            <label class="block text-sm font-bold text-white mb-1">Giro de la Empresa</label>
+                            <select name="giro" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-brand-cyan transition-colors">
+                                <option value="" disabled selected class="bg-slate-900 text-slate-400">Seleccione el sector...</option>
+                                <option value="Automotriz / Aeroespacial" class="bg-slate-900 text-white">Automotriz / Aeroespacial</option>
+                                <option value="Logística / CEDIS" class="bg-slate-900 text-white">Logística / CEDIS</option>
+                                <option value="Alimentos y Bebidas" class="bg-slate-900 text-white">Alimentos y Bebidas</option>
+                                <option value="Metalmecánica / Tratamientos" class="bg-slate-900 text-white">Metalmecánica / Tratamiento de Superficies</option>
+                                <option value="Inyección de Plásticos" class="bg-slate-900 text-white">Inyección de Plásticos / Manufactura</option>
+                                <option value="Cámaras de Refrigeración" class="bg-slate-900 text-white">Cámaras de Refrigeración</option>
+                                <option value="Otro" class="bg-slate-900 text-white">Otro</option>
+                            </select>
+                        </div>
 
-                            <!-- Metraje Aproximado (Seleccionable) -->
-                            <div>
-                                <label class="block text-sm font-bold text-white mb-1">Metraje Aproximado</label>
-                                <select name="metraje" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-slate-800 focus:outline-none focus:border-brand-cyan transition-colors">
-                                    <option value="" disabled selected>Seleccione el área...</option>
-                                    <option value="Menos de 100 m2">Menos de 100 m²</option>
-                                    <option value="100 - 500 m2">De 100 a 500 m²</option>
-                                    <option value="500 - 1000 m2">De 500 a 1,000 m²</option>
-                                    <option value="1000 - 3000 m2">De 1,000 a 3,000 m²</option>
-                                    <option value="Más de 3000 m2">Mayor a 3,000 m²</option>
-                                </select>
-                            </div>
+                        <!-- Metraje Aproximado (Seleccionable) -->
+                        <div>
+                            <label class="block text-sm font-bold text-white mb-1">Metraje Aproximado</label>
+                            <select name="metraje" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-brand-cyan transition-colors">
+                                <option value="" disabled selected class="bg-slate-900 text-slate-400">Seleccione el área...</option>
+                                <option value="Menos de 100 m2" class="bg-slate-900 text-white">Menos de 100 m²</option>
+                                <option value="100 - 500 m2" class="bg-slate-900 text-white">De 100 a 500 m²</option>
+                                <option value="500 - 1000 m2" class="bg-slate-900 text-white">De 500 a 1,000 m²</option>
+                                <option value="1000 - 3000 m2" class="bg-slate-900 text-white">De 1,000 a 3,000 m²</option>
+                                <option value="Más de 3000 m2" class="bg-slate-900 text-white">Mayor a 3,000 m²</option>
+                            </select>
+                        </div>   
+
+                       
+                         
 
                             <div class="col-span-1 md:col-span-2">
                                 <label class="block text-sm font-bold text-white mb-1">Comentarios adicionales (Opcional)</label>
