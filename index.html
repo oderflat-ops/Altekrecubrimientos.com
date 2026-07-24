@@ -1,699 +1,407 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- METADATOS B2B OPTIMIZADOS -->
-    <meta name="description" content="ALTEK | Sistemas epóxicos y de poliuretano para ambientes industriales exigentes. Solicite su diagnóstico gratuito.">
-    <meta property="og:title" content="ALTEK | Recubrimientos Industriales y Pisos Epóxicos">
-    <meta property="og:description" content="Diagnóstico técnico sin costo. Garantía 18 meses. Ejecutamos en fin de semana. Cobertura en toda la República Mexicana.">
-    <meta property="og:image" content="image_4.png"> <!-- Imagen sugerida: Zona de Carga -->
+    <title>ALTEK | Pisos Epóxicos y Recubrimientos Industriales</title>
+    <meta name="description" content="ALTEK es especialista en sistemas epóxicos y de poliuretano. Soportan tráfico pesado y cumplen normas sanitarias (COFEPRIS/FDA). Cobertura nacional.">
+    <meta property="og:title" content="ALTEK | Recubrimientos Industriales de Alto Desempeño">
+    <meta property="og:description" content="Sistemas epóxicos con 18 meses de garantía por escrito. Ejecución adaptada a sus horarios para evitar paros operativos.">
+    <meta property="og:image" content="image_4.png">
     <meta property="og:type" content="website">
     
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src https://cdnjs.cloudflare.com; img-src 'self' data:; script-src 'self' 'unsafe-inline'; connect-src 'self' https://formspree.io;">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <title>ALTEK | Recubrimientos Industriales</title>
+    <!-- CONFIGURACIÓN DE TAILWIND CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#08111F',
+                            cyan: '#00D4FF',
+                            cyanGlow: 'rgba(0, 212, 255, 0.5)',
+                            orange: '#F57C00',
+                            orangeHover: '#FF8F24',
+                            glass: 'rgba(16, 24, 39, 0.75)',
+                            whatsapp: '#25D366'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <style>
-	:root { 
-            --bg-color: #08111F; 
-            --primary-glow: #00D4FF; 
-            --secondary-glow: #0F3D5E; 
-            --cta-orange: #F57C00; 
-            --wp-color: #25D366; 
-            --glass-bg: rgba(16, 24, 39, 0.85); /* #101827 con toque de cristal */
-            --glass-border: rgba(255, 255, 255, 0.08); 
-            --text-main: #FFFFFF; 
-            --text-muted: #D5D9E2; /* Texto secundario más claro y legible */
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background-color: var(--bg-color); color: var(--text-main); font-family: 'Segoe UI', Helvetica, Arial, sans-serif; overflow-x: hidden; padding-bottom: 0; }
-
-        /* FONDO ANIMADO */
-        #bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; pointer-events: none; }
-        .content-wrapper { position: relative; z-index: 2; }
-
-        /* NAVEGACIÓN SUPERIOR */
-        .icon-nav { position: fixed; top: 0; left: 0; width: 100%; display: flex; justify-content: center; gap: 1.2rem; z-index: 1000; padding: 0.8rem 1rem; background: rgba(8, 17, 31, 0.95); backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border); flex-wrap: wrap; }
-        .icon-nav a { color: var(--text-muted); display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; transition: 0.3s; font-size: 0.7rem; font-weight: 500; text-align: center; }
-        .icon-nav a i { font-size: 1.2rem; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--glass-border); transition: 0.3s; }
-        .icon-nav a:hover, .icon-nav a.active { color: var(--primary-glow); }
-        .icon-nav a:hover i, .icon-nav a.active i { box-shadow: 0 0 15px var(--primary-glow); border-color: var(--primary-glow); transform: translateY(-3px) scale(1.1); }
-
-        /* SECCIONES Y PANELES */
-        section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 8rem 5% 4rem 5%; position: relative; }
-        .glass-panel { 
-            background: rgba(16, 24, 39, 0.75); 
-            backdrop-filter: blur(15px); 
-            border: 1px solid rgba(0, 212, 255, 0.5); /* Borde cian al 50% de intensidad */
-            border-radius: 24px; 
-            padding: 4rem 3rem; 
-            max-width: 1000px; 
-            width: 100%; 
-            text-align: center; 
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6); 
-        }
-
-        /* TÍTULOS (Sin degradado global para permitir colores específicos) */
-        h1 { font-size: 3rem; letter-spacing: 1px; line-height: 1.3; margin-bottom: 1.5rem; font-weight: 800; color: var(--text-main); }
-        h2 { font-size: 2.2rem; margin-bottom: 1.5rem; color: var(--primary-glow); font-weight: 600; }
-        p { font-size: 1.1rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem; }
-
-        /* BOTONES INDUSTRIALES B2B */
-        .btn-container { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
-        
-        /* Botón Naranja CTA */
-       .btn-glow { 
-            display: inline-flex; align-items: center; gap: 10px; 
-            padding: 1.2rem 2.5rem; font-size: 1.1rem; font-weight: 800; 
-            color: #ffffff; background: var(--cta-orange); 
-            border: none; border-radius: 40px; cursor: pointer; text-decoration: none; text-transform: uppercase; 
-            letter-spacing: 1px; /* Toque premium que separa las letras */
-            box-shadow: 0 0 25px rgba(245, 124, 0, 0.6); /* Rey indiscutible */
-            transition: 0.3s; 
-        }
-        .btn-glow:hover { box-shadow: 0 0 35px var(--cta-orange); transform: translateY(-4px) scale(1.02); background: #FF8F24; }
-        
-        /* Botón WhatsApp Sólido */
-       .btn-wa-pro { 
-            display: inline-flex; align-items: center; gap: 10px; 
-            padding: 1.2rem 2.5rem; font-size: 1.1rem; font-weight: 800; 
-            background: var(--wp-color); color: #ffffff; 
-            border: none; border-radius: 40px; text-decoration: none; text-transform: uppercase; 
-            letter-spacing: 1px;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2); /* Sombra muy discreta para no competir */
-            transition: 0.3s; 
-        }
-        .btn-wa-pro i { color: #ffffff; font-size: 1.3rem; }
-        .btn-wa-pro:hover { background: #2EE672; box-shadow: 0 0 20px rgba(37, 211, 102, 0.5); transform: translateY(-4px) scale(1.02); }
-        
-        /* Botón Formulario (Naranja) */
-        .form-btn { grid-column: span 2; padding: 1.2rem; background: var(--cta-orange); color: #ffffff; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
-        .form-btn:hover { box-shadow: 0 0 25px rgba(245, 124, 0, 0.5); transform: translateY(-2px); background: #FF8F24; }
-
-        .btn-calendly { background: transparent; border: 2px solid var(--primary-glow); color: var(--primary-glow); display: inline-flex; align-items: center; gap: 10px; padding: 1.1rem 2rem; font-size: 1.05rem; font-weight: 700; border-radius: 40px; text-decoration: none; text-transform: uppercase; transition: 0.3s; }
-        .btn-calendly:hover { background: rgba(0, 212, 255, 0.1); color: #fff; } 
-
-	/* LÍNEA DE CONFIANZA */
-        .trust-line { 
-            margin-top: 2rem; /* Damos oxígeno separándola de los botones */
-            font-size: 0.95rem; 
-            color: var(--text-muted); 
-            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; opacity: 0.9; 
-        }
-        
-        .trust-line span { 
-            display: flex; align-items: center; gap: 6px; 
-        }
-
-        /* GRIDS (Tarjetas) */
-        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-	.card { 
-            background: #101827; 
-            padding: 2.5rem 1.5rem; 
-            border-radius: 16px; 
-            border: 1px solid rgba(0, 212, 255, 0.4); /* Consistencia visual con el panel */
-            transition: 0.3s; 
-            text-align: left; 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Hacemos que floten */
-        }       
-        .card:hover { transform: translateY(-5px); border-color: rgba(0, 243, 255, 0.3); background: rgba(255,255,255,0.05); }
-        .card i { font-size: 2.5rem; color: var(--primary-glow); margin-bottom: 1rem; }
-        .card h4 { color: #fff; font-size: 1.2rem; font-weight: 600; margin-bottom: 0.8rem; }
-        .card p { font-size: 0.95rem; margin-bottom: 0; }
-
-        /* ESTADÍSTICAS */
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .stat-item { background: rgba(255,255,255,0.02); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--glass-border); }
-        .stat-item h3 { font-size: 2.2rem; color: var(--primary-glow); margin-bottom: 0.5rem; line-height: 1.1; }
-        .stat-item p { font-size: 0.85rem; margin: 0; text-transform: uppercase; font-weight: 700; color: #fff; }
-
-        /* GALERÍA 2x2 BLINDADA */
-        .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2rem; }
-        .gallery-card { background: rgba(0,0,0,0.5); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; text-align: left; transition: 0.3s; display: flex; flex-direction: column; }
-        .gallery-card img { width: 100%; height: 240px; object-fit: cover; border-bottom: 1px solid var(--glass-border); }
-        .gallery-card:hover { border-color: rgba(0, 243, 255, 0.4); transform: translateY(-5px); }
-        .gallery-info { padding: 1.5rem; flex-grow: 1; }
-        .gallery-info h4 { font-size: 1.3rem; color: var(--primary-glow); margin-bottom: 0.8rem; }
-        .b2b-context p { margin-bottom: 0.5rem; font-size: 0.9rem; line-height: 1.4; color: #cbd5e1; }
-        .b2b-context strong { color: #fff; }
-        .b2b-context .highlight { color: var(--wp-color); font-weight: bold; }
-
-        /* LOGOS */
-        .logo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 2rem; align-items: center; justify-items: center; margin-top: 2rem; }
-        .logo-grid img { max-width: 90px; filter: grayscale(100%) brightness(120%); opacity: 0.5; transition: 0.3s; }
-        .logo-grid img:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.1); }
-        .social-proof { margin-top: 2rem; font-size: 1.1rem; color: var(--primary-glow); font-style: italic; font-weight: 600; border-top: 1px solid var(--glass-border); padding-top: 1.5rem; }
-
-        /* FORMULARIO B2B */
-        .b2b-form { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: left; background: rgba(0,0,0,0.2); padding: 2rem; border-radius: 16px; border: 1px solid var(--glass-border); }
-        .b2b-form label { font-size: 0.9rem; color: #fff; font-weight: 600; margin-bottom: 5px; display: block; }
-        input, select, textarea { width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; font-family: inherit; transition: 0.3s; }
-        input:focus, select:focus, textarea:focus { outline: none; border-color: var(--primary-glow); background: rgba(0, 243, 255, 0.05); }
-        .full-width { grid-column: span 2; }
-        .form-btn { grid-column: span 2; padding: 1.2rem; background: var(--primary-glow); color: #000; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
-        .form-btn:hover { box-shadow: 0 0 20px rgba(0, 243, 255, 0.5); transform: translateY(-2px); }
-
-	/* Corrección para visibilidad de opciones en formulario */
-	select {
-   	 color: #333 !important;
-  	  background-color: #fff !important;
-	}
-
-	select option {
-   	 color: #333 !important;
-   	 background-color: #fff !important;
-	}
-
-        /* WHATSAPP FLOTANTE GLOBAL */
-        .floating-wa { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5); z-index: 9999; transition: 0.3s; text-decoration: none; }
-        .floating-wa:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.7); }
-
-        .sticky-mobile { display: none; }
-        .hidden { opacity: 0; transform: translateY(40px); filter: blur(5px); transition: all 0.8s ease; }
-        .show { opacity: 1; transform: translateY(0); filter: blur(0); }
-
-        /* --- RESPONSIVE ESCRITORIO ANCHO --- */
-        @media (min-width: 1024px) {
-            .icon-nav { padding: 1.2rem 2rem; gap: 2.5rem; flex-wrap: nowrap; }
-            .icon-nav a i { width: 45px; height: 45px; font-size: 1.5rem; }
-            .icon-nav a span { font-size: 0.85rem; }
-        }
-
-	/* --- RESPONSIVE MÓVIL --- */
-        @media (max-width: 768px) {
-            /* 1. Título con jerarquía visual y espaciado */
-            h1 { 
-                font-size: 1.85rem !important; 
-                line-height: 1.25 !important; 
-                letter-spacing: -0.5px !important; 
-                margin-bottom: 1.5rem !important; 
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel {
+                @apply bg-brand-glass backdrop-blur-md border border-brand-cyanGlow rounded-3xl p-8 md:p-12 w-full max-w-5xl text-center shadow-[0_20px_50px_rgba(0,0,0,0.6)];
             }
-            
-            /* 2. Párrafo secundario */
-            .glass-panel p { 
-                font-size: 1.05rem !important; 
-                line-height: 1.4; 
-                margin-bottom: 1.5rem; 
+            .nav-link {
+                @apply flex flex-col items-center gap-1 text-slate-300 hover:text-brand-cyan transition-all text-[0.7rem] font-medium;
             }
-
-            /* 3. Ajuste del panel (Mantiene tu transparencia de 0.45 y agrega el borde brillante) */
-            section { 
-                padding: 6rem 4% 5rem 4%; 
-                min-height: auto; 
+            .nav-icon {
+                @apply w-9 h-9 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-lg transition-all;
             }
-            .glass-panel { 
-                padding: 2.5rem 1.2rem; 
-                background: rgba(16, 24, 39, 0.45) !important; 
-                backdrop-filter: blur(12px) !important;
-                border: 1px solid rgba(0, 212, 255, 0.5) !important;
+            .nav-link:hover .nav-icon, .nav-link.active .nav-icon {
+                @apply shadow-[0_0_15px_#00D4FF] border-brand-cyan -translate-y-1 scale-110 text-brand-cyan;
             }
-            
-            /* 4. Botones apilados al 100% para fácil clic */
-            .btn-container { 
-                flex-direction: column; 
-                width: 100%; 
-                gap: 1.2rem; 
+            .card-b2b {
+                @apply bg-slate-900/90 p-8 rounded-2xl border border-brand-cyanGlow/40 text-left transition-all hover:-translate-y-2 hover:border-brand-cyan/60 hover:bg-white/5 shadow-xl;
             }
-            .btn-glow, .btn-wa-pro, .btn-outline, .btn-calendly { 
-                width: 100%; 
-                justify-content: center; 
-                text-align: center; 
-                padding: 1.2rem 1rem !important; 
+            .btn-orange {
+                @apply inline-flex items-center gap-2 px-8 py-4 text-white font-extrabold uppercase tracking-wide bg-brand-orange rounded-full transition-all hover:bg-brand-orangeHover hover:scale-105 hover:shadow-[0_0_25px_rgba(245,124,0,0.6)];
             }
-
-            /* 5. Menú superior más discreto y deslizable */
-            .icon-nav { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding: 0.5rem; gap: 0.5rem; -webkit-overflow-scrolling: touch; }
-            .icon-nav::-webkit-scrollbar { display: none; }
-            .icon-nav a { min-width: 50px; font-size: 0.65rem; }
-            .icon-nav a span { display: none; }
-            .icon-nav a i { width: 32px; height: 32px; font-size: 1.1rem; }
-
-            /* 6. Corrección de Grids para Formularios y Galería en móvil */
-            .gallery-grid { grid-template-columns: 1fr; }
-            .b2b-form { grid-template-columns: 1fr; padding: 1.5rem; }
-            .full-width { grid-column: span 1; }
-            .form-btn { grid-column: span 1; }
-
-            /* 7. Ocultar flotante en móvil para usar la barra fija */
-            .floating-wa { display: none; }
-
-            /* 8. BARRA FIJA MÓVIL (Tu código intacto) */
-            .sticky-mobile { display: flex; position: fixed; bottom: 0; left: 0; width: 100%; z-index: 2000; box-shadow: 0 -4px 20px rgba(0,0,0,0.5); }
-            .sticky-mobile a { flex: 1; padding: 1.2rem 0.5rem; text-align: center; text-decoration: none; font-weight: 800; font-size: 0.9rem; color: #ffffff; display: flex; align-items: center; justify-content: center; gap: 8px; text-transform: uppercase; }
-            .btn-sticky-cal { background: var(--primary-glow); color: #000 !important; }
-            .btn-sticky-wa { background: #25D366; }
-            body { padding-bottom: 70px; }
-        }  
-       
+            .btn-ghost {
+                @apply inline-flex items-center gap-2 px-8 py-3 text-brand-cyan font-bold uppercase border-2 border-brand-cyan rounded-full transition-all hover:bg-brand-cyan/10 hover:text-white;
+            }
+            .fade-in-section {
+                @apply opacity-0 translate-y-10 blur-sm transition-all duration-700 ease-out;
+            }
+            .fade-in-section.is-visible {
+                @apply opacity-100 translate-y-0 blur-none;
+            }
+        }
     </style>
 </head>
-<body>
+<body class="bg-brand-bg text-white overflow-x-hidden pt-20 pb-20 md:pb-0">
 
     <!-- LIENZO DE PARTÍCULAS -->
-    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"></canvas>
 
-    <div class="content-wrapper">
+    <div class="relative z-10">
 
-        <!-- NAVEGACIÓN SUPERIOR (9 Elementos) -->
-        <nav class="icon-nav">
-            <a href="#inicio" class="active"><i class="fa-solid fa-house"></i><span>Inicio</span></a>
-            <a href="#diferenciador"><i class="fa-solid fa-shield-halved"></i><span>Nosotros</span></a>
-            <a href="#servicios"><i class="fa-solid fa-layer-group"></i><span>Servicios</span></a>
-            <a href="#sectores"><i class="fa-solid fa-industry"></i><span>Sectores</span></a>
-            <a href="#proceso"><i class="fa-solid fa-gears"></i><span>Proceso</span></a>
-            <a href="#galeria"><i class="fa-solid fa-camera-retro"></i><span>Proyectos</span></a>
-            <a href="#experiencia"><i class="fa-solid fa-medal"></i><span>Experiencia</span></a>
-            <a href="#logos"><i class="fa-solid fa-network-wired"></i><span>Socios</span></a>
-	    <a href="#brochure"><i class="fa-solid fa-download"></i><span>Catálogo</span></a>
-            <a href="#contacto"><i class="fa-solid fa-satellite-dish"></i><span>Contacto</span></a>
+       <!-- NAVEGACIÓN SUPERIOR (Rutas Multi-página) -->
+        <nav class="fixed top-0 left-0 w-full flex justify-start md:justify-center gap-2 md:gap-10 z-50 p-3 bg-brand-bg/95 backdrop-blur-md border-b border-white/10 overflow-x-auto no-scrollbar">
+            <a href="/" class="nav-link active"><div class="nav-icon"><i class="fa-solid fa-house"></i></div><span class="hidden md:block">Inicio</span></a>
+            <a href="/nosotros" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-shield-halved"></i></div><span class="hidden md:block">Nosotros</span></a>
+            <a href="/servicios" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-layer-group"></i></div><span class="hidden md:block">Servicios</span></a>
+            <a href="/sectores" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-industry"></i></div><span class="hidden md:block">Sectores</span></a>
+            <a href="/proceso" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-gears"></i></div><span class="hidden md:block">Proceso</span></a>
+            <a href="/proyectos" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-camera-retro"></i></div><span class="hidden md:block">Proyectos</span></a>
+            <a href="/contacto" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-satellite-dish"></i></div><span class="hidden md:block">Contacto</span></a>
         </nav>
 
-       <!-- 1. HERO (Colores Industriales B2B) -->
-       <section id="inicio">
-            <div class="glass-panel hidden">
-                <h1>
-                    <span style="color: var(--primary-glow);">ALTEK:</span> 
-                    Sistemas epóxicos y de poliuretano para ambientes industriales exigentes.
+       <!-- 1. HERO (Optimizada para SEO Directo) -->
+       <section id="inicio" class="min-h-screen flex items-center justify-center p-6 md:p-12">
+            <div class="glass-panel fade-in-section">
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-6 text-white tracking-tight">
+                    <span class="text-brand-cyan">ALTEK:</span> Pisos Epóxicos y Recubrimientos Industriales de Alto Desempeño
                 </h1>
                 
-                <p style="font-size: 1.2rem; color: var(--text-muted);">
-                    <strong>Mercedes-Benz</strong>, 
-                    <strong>Honda</strong> y 
-                    <strong>Coca-Cola FEMSA</strong> 
-                    ya lo comprobaron — ¿cuándo visitamos su planta?
+                <!-- Párrafo SEO: Respuesta directa para AI Overviews -->
+                <p class="text-lg md:text-xl text-slate-300 mb-4 max-w-3xl mx-auto font-medium">
+                    Sistemas de recubrimientos epóxicos y poliuretano diseñados para soportar tráfico pesado, resistir desgaste químico y cumplir estrictas normativas sanitarias en toda la República Mexicana.
                 </p>
 
-                <div class="btn-container">
-                    <a href="#contacto" class="btn-glow"><i class="fa-solid fa-clipboard-check"></i> Agendar Diagnóstico</a>
-                    <a href="https://wa.me/525535820734?text=Hola,%20me%20gustaría%20agendar%20un%20diagnóstico%20técnico%20gratuito." target="_blank" rel="noopener noreferrer" class="btn-wa-pro">
-                        <i class="fa-brands fa-whatsapp"></i> Hablar con un Especialista
+                <p class="text-md md:text-lg text-slate-400 mb-8 italic">
+                    <strong>Mercedes-Benz</strong>, <strong>Honda</strong> y <strong>Coca-Cola FEMSA</strong> ya lo comprobaron — ¿cuándo visitamos su planta?
+                </p>
+
+                <div class="flex flex-col md:flex-row justify-center gap-4 mb-8">
+                    <a href="#contacto" class="btn-orange"><i class="fa-solid fa-clipboard-check"></i> Agendar Diagnóstico</a>
+                    <a href="https://wa.me/525535820734?text=Hola,%20me%20gustaría%20agendar%20un%20diagnóstico%20técnico." target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-extrabold uppercase bg-[#25D366] rounded-full hover:bg-[#2EE672] hover:scale-105 transition-all shadow-lg">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Hablar con un Especialista
                     </a>
                 </div>
 
-                <div class="trust-line">
-                    <span><i class="fa-solid fa-check"></i> Cotización en 24h</span>
-                    <span><i class="fa-solid fa-check"></i> Garantía por escrito</span>
-                    <span><i class="fa-solid fa-check"></i> Atención Nacional</span>
+                <div class="flex flex-wrap justify-center gap-6 text-slate-300 text-sm md:text-base font-medium">
+                    <span><i class="fa-solid fa-check text-brand-cyan mr-1"></i> Cotización en 24h</span>
+                    <span><i class="fa-solid fa-check text-brand-cyan mr-1"></i> Garantía 18 meses</span>
+                    <span><i class="fa-solid fa-check text-brand-cyan mr-1"></i> Atención Nacional</span>
                 </div>
             </div>
         </section>    
 
-        <!-- 2. POR QUÉ ALTEK (Diferenciadores Críticos) -->
-        <section id="diferenciador">
-            <div class="glass-panel hidden">
-                <h2>Lo que ningún otro proveedor puede garantizarle</h2>
-                <div class="grid-4">
-                    <div class="card">
-                        <i class="fa-solid fa-flask"></i>
-                        <h4>Fabricamos Nuestra Propia Materia Prima</h4>
-                        <p>No compramos a distribuidores ni revendemos productos de terceros. Cada sistema que aplicamos sale de nuestra propia formulación polimérica — eso nos da control total de calidad, sin intermediarios y sin variabilidad.</p>
+        <!-- 2. POR QUÉ ALTEK -->
+        <section id="diferenciador" class="min-h-screen flex items-center justify-center p-6 md:p-12">
+            <div class="glass-panel fade-in-section">
+                <h2 class="text-3xl font-bold text-brand-cyan mb-10">Lo que ningún otro proveedor puede garantizarle</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="card-b2b">
+                        <i class="fa-solid fa-flask text-4xl text-brand-cyan mb-4"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Materias Primas Propias</h4>
+                        <p class="text-slate-400 text-sm">Control total de calidad en la formulación polimérica, sin intermediarios ni variabilidad.</p>
                     </div>
-                    <div class="card">
-                        <i class="fa-solid fa-file-signature"></i>
-                        <h4>18 Meses de Garantía por Escrito</h4>
-                        <p>No es un ofrecimiento verbal. Entregamos un documento formal que protege su inversión contra desprendimientos. Si algo falla dentro del período, regresamos y lo corregimos sin costo adicional.</p>
+                    <div class="card-b2b">
+                        <i class="fa-solid fa-file-signature text-4xl text-brand-cyan mb-4"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">18 Meses de Garantía</h4>
+                        <p class="text-slate-400 text-sm">Documento formal que protege su inversión contra desprendimientos.</p>
                     </div>
-                    <div class="card">
-                        <i class="fa-solid fa-calendar-check"></i>
-                        <h4>Cero Paros Operativos (Fines de Semana)</h4>
-                        <p>Toda nuestra ejecución se planifica logísticamente para realizarse sábado y domingo. El lunes su planta opera con normalidad sobre su nuevo piso. Trabajamos así desde 2002.</p>
+                    <div class="card-b2b">
+                        <i class="fa-solid fa-clock text-4xl text-brand-cyan mb-4"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Horarios Flexibles</h4>
+                        <p class="text-slate-400 text-sm">Ejecutamos en los tiempos y ventanas operativas que le convengan para asegurar cero paros en su producción.</p>
                     </div>
-                    <div class="card">
-                        <i class="fa-solid fa-magnifying-glass-chart"></i>
-                        <h4>Diagnóstico Técnico Independiente</h4>
-                        <p>Antes de proponer un sistema, hacemos un levantamiento físico en sitio: medición, análisis de humedad y evaluación del riesgo operativo real.</p>
+                    <div class="card-b2b">
+                        <i class="fa-solid fa-magnifying-glass-chart text-4xl text-brand-cyan mb-4"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Diagnóstico Físico</h4>
+                        <p class="text-slate-400 text-sm">Análisis de humedad estructural y riesgo operativo directo en sitio antes de cotizar.</p>
                     </div>
                 </div>
-               <div class="btn-container" style="margin-top: 3rem;">
-			
-                    <a href="https://calendar.app.google/xdpRTJTifcgFxmqK7" target="_blank" rel="noopener noreferrer" class="btn-outline btn-calendly">
-                        <i class="fa-regular fa-calendar-alt"></i> Agendar Diagnóstico en Calendario
-                    </a>
+                <!-- Botón de Navegación Arquitectura -->
+                <div class="mt-10">
+                    <a href="/nosotros" class="btn-ghost">Conozca más sobre nuestra trayectoria</a>
                 </div>
             </div>
         </section>
 
-        <!-- 3. SERVICIOS (Agregada Rehabilitación) -->
-        <section id="servicios">
-            <div class="glass-panel hidden">
-                <h2>Servicios Especializados</h2>
-                <div class="grid-4" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-                    <div class="card">
-                        <i class="fa-solid fa-layer-group"></i>
-                        <h4>Tecnología Epóxica</h4>
-                        <p>Resistencia extrema. Sistemas monolíticos impenetrables ante químicos, impacto severo y tráfico pesado logístico.</p>
+        <!-- 3. SERVICIOS HUB -->
+        <section id="servicios" class="min-h-screen flex items-center justify-center p-6 md:p-12">
+            <div class="glass-panel fade-in-section">
+                <h2 class="text-3xl font-bold text-brand-cyan mb-10">Sistemas y Servicios</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="card-b2b">
+                        <i class="fa-solid fa-layer-group text-4xl text-brand-cyan mb-4"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Tecnología Epóxica</h4>
+                        <p class="text-slate-400 text-sm">Sistemas monolíticos impenetrables ante impacto y tráfico pesado logístico.</p>
                     </div>
-                    <div class="card">
-                        <i class="fa-solid fa-temperature-arrow-down"></i>
-                        <h4>Sistemas de Poliuretano</h4>
-                        <p>Aislamiento térmico avanzado. Protege contra UV, humedad y cambios extremos de temperatura.</p>
+                    <div class="card-b2b">
+                        <i class="fa-solid fa-temperature-arrow-down text-4xl text-brand-cyan mb-4"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Poliuretano Espreado</h4>
+                        <p class="text-slate-400 text-sm">Aislamiento térmico avanzado. Protege contra UV y cambios de temperatura.</p>
                     </div>
-                    <div class="card" style="border-color: var(--primary-glow); background: rgba(0, 96, 255, 0.05);">
-                        <i class="fa-solid fa-hammer"></i>
-                        <h4>Rehabilitación Estructural de Pisos</h4>
-                        <p>Servicio quirúrgico para extender la vida útil de su firme sin reemplazarlo. Reparamos juntas constructivas, baches, grietas activas y curvas sanitarias. Ideal para zonas de riesgo inmediatas.</p>
-                        <a href="#contacto" class="btn-secondary" style="margin-top: 1rem;">Evaluar mi piso &rarr;</a>
+                    <div class="card-b2b border-brand-cyan bg-blue-900/10">
+                        <i class="fa-solid fa-hammer text-4xl text-brand-cyan mb-4"></i>
+                        <h4 class="text-lg font-bold text-white mb-2">Rehabilitación Estructural</h4>
+                        <p class="text-slate-400 text-sm">Bacheo y reparación de juntas para extender la vida del firme sin reemplazarlo.</p>
                     </div>
+                </div>
+                <div class="mt-10">
+                    <a href="/servicios" class="btn-ghost">Ver catálogo completo de servicios</a>
                 </div>
             </div>
         </section>
 
-        <!-- 4. SECTORES (Nueva Sección) -->
-        <section id="sectores">
-            <div class="glass-panel hidden">
-                <h2>Soluciones por Sector Industrial</h2>
-                <div class="grid-4">
-                    <div class="card">
-                        <h4><i class="fa-solid fa-truck-fast"></i> CEDIS / Logística</h4>
-                        <p style="margin-top: 10px;"><strong>Problema:</strong> Desgaste por montacargas &rarr; riesgo de accidente.</p>
-                        <p style="margin-top: 10px; color: var(--primary-glow);"><strong>Solución:</strong> Epóxico alta resistencia + señalización integrada.</p>
+        <!-- 4. SECTORES HUB -->
+        <section id="sectores" class="min-h-screen flex items-center justify-center p-6 md:p-12">
+            <div class="glass-panel fade-in-section">
+                <h2 class="text-3xl font-bold text-brand-cyan mb-10">Especializados por Sector</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="card-b2b">
+                        <h4 class="text-white font-bold mb-3"><i class="fa-solid fa-truck-fast mr-2"></i> CEDIS / Logística</h4>
+                        <p class="text-slate-400 text-sm mb-2"><strong>Problema:</strong> Desgaste por montacargas.</p>
+                        <p class="text-brand-cyan text-sm font-semibold">Solución: Epóxico alta resistencia.</p>
                     </div>
-                    <div class="card">
-                        <h4><i class="fa-solid fa-wheat-awn"></i> Industria Alimentaria</h4>
-                        <p style="margin-top: 10px;"><strong>Problema:</strong> Retención bacteriana, no conformidades COFEPRIS.</p>
-                        <p style="margin-top: 10px; color: var(--primary-glow);"><strong>Solución:</strong> Piso Grado Alimenticio aséptico sin juntas.</p>
+                    <div class="card-b2b">
+                        <h4 class="text-white font-bold mb-3"><i class="fa-solid fa-wheat-awn mr-2"></i> Industria Alimentaria</h4>
+                        <p class="text-slate-400 text-sm mb-2"><strong>Problema:</strong> Bacterias, riesgo COFEPRIS.</p>
+                        <p class="text-brand-cyan text-sm font-semibold">Solución: Grado Alimenticio aséptico.</p>
                     </div>
-                    <div class="card">
-                        <h4><i class="fa-solid fa-industry"></i> Manufactura</h4>
-                        <p style="margin-top: 10px;"><strong>Problema:</strong> Superficies resbaladizas, fallos estructurales en firmes.</p>
-                        <p style="margin-top: 10px; color: var(--primary-glow);"><strong>Solución:</strong> Sistemas antiderrapantes + rehabilitación.</p>
+                    <div class="card-b2b">
+                        <h4 class="text-white font-bold mb-3"><i class="fa-solid fa-industry mr-2"></i> Manufactura</h4>
+                        <p class="text-slate-400 text-sm mb-2"><strong>Problema:</strong> Derrames y resbalones.</p>
+                        <p class="text-brand-cyan text-sm font-semibold">Solución: Sistemas antiderrapantes.</p>
                     </div>
-                    <div class="card">
-                        <h4><i class="fa-solid fa-snowflake"></i> Cámaras de Refrigeración</h4>
-                        <p style="margin-top: 10px;"><strong>Problema:</strong> Filtraciones y fugas críticas de temperatura.</p>
-                        <p style="margin-top: 10px; color: var(--primary-glow);"><strong>Solución:</strong> Poliuretano espreado con sellado hermético.</p>
+                    <div class="card-b2b">
+                        <h4 class="text-white font-bold mb-3"><i class="fa-solid fa-snowflake mr-2"></i> Refrigeración</h4>
+                        <p class="text-slate-400 text-sm mb-2"><strong>Problema:</strong> Fugas de temperatura.</p>
+                        <p class="text-brand-cyan text-sm font-semibold">Solución: Poliuretano hermético.</p>
                     </div>
+                </div>
+                <div class="mt-10">
+                    <a href="/sectores" class="btn-ghost">Ver todas las industrias que cubrimos</a>
                 </div>
             </div>
         </section>
 
-        <!-- 5. PROCESO DE TRABAJO (Nueva Sección) -->
-        <section id="proceso">
-            <div class="glass-panel hidden">
-                <h2>Nuestro Proceso de Trabajo</h2>
-                <div class="grid-4">
-                    <div class="card">
-                        <i class="fa-solid fa-1"></i>
-                        <h4>DIAGNÓSTICO</h4>
-                        <p>Levantamiento físico en sitio: medición de áreas, análisis de humedad estructural, identificación de riesgos. <em>Entregable: Reporte técnico por escrito.</em></p>
-                    </div>
-                    <div class="card">
-                        <i class="fa-solid fa-2"></i>
-                        <h4>PROPUESTA</h4>
-                        <p>Documento ejecutivo con el sistema recomendado, planeación logística alineada a sus ventanas de paro y desglose de costos transparente.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa-solid fa-3"></i>
-                        <h4>EJECUCIÓN</h4>
-                        <p>Preparación mecánica profunda y aplicación del sistema polimérico. Coordinada en fines de semana para cero impacto operativo.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa-solid fa-4"></i>
-                        <h4>ENTREGA Y SEGUIMIENTO</h4>
-                        <p>Pruebas de secado, liberación del área y seguimiento post-entrega continuo. <strong>Garantía activa desde la entrega.</strong></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. GALERÍA DE PROYECTOS (Grid 2x2 Fija con Contexto B2B) -->
-        <section id="galeria">
-            <div class="glass-panel hidden">
-                <h2>Proyectos Destacados</h2>
-                <p>Donde la ciencia de los materiales se encuentra con la excelencia industrial.</p>
-                <div class="gallery-grid">
-                    <div class="gallery-card">
-                        <img src="image_3.png" alt="Pista de Autobuses" loading="lazy">
-                        <div class="gallery-info b2b-context">
-                            <h4>Pista de Autobuses</h4>
-                            <p><strong>SECTOR:</strong> Transporte / Logística</p>
-                            <p><strong>RETO:</strong> Desgaste severo por tráfico pesado continuo.</p>
-                            <p><strong>SOLUCIÓN:</strong> Sistema Epóxico de Alta Resistencia.</p>
-                            <p><strong>RESULTADO:</strong> Ejecutado en 1 fin de semana operativo.</p>
-                            <p class="highlight">DATO CLAVE: Garantía 18 meses por escrito.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card">
-                        <img src="image_4.png" alt="Zona de Carga Monolítica" loading="lazy">
-                        <div class="gallery-info b2b-context">
-                            <h4>Zona de Carga Monolítica</h4>
-                            <p><strong>SECTOR:</strong> Logística / CEDIS</p>
-                            <p><strong>RETO:</strong> Daño estructural por tráfico ininterrumpido de montacargas.</p>
-                            <p><strong>SOLUCIÓN:</strong> Piso Epóxico Antideslizante Monolítico — 1,200 m².</p>
-                            <p><strong>RESULTADO:</strong> Cero incidentes. Ejecutado sin paro logístico.</p>
-                            <p class="highlight">DATO CLAVE: Garantía 18 meses por escrito.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card">
-                        <img src="image_0.png" alt="Almacenamiento Crítico" loading="lazy">
-                        <div class="gallery-info b2b-context">
-                            <h4>Almacenamiento Crítico</h4>
-                            <p><strong>SECTOR:</strong> Industria Alimentaria / Farma</p>
-                            <p><strong>RETO:</strong> Requerimiento estricto de asepsia y control de polvo.</p>
-                            <p><strong>SOLUCIÓN:</strong> Recubrimiento Antipolvo 100% lavable sin juntas.</p>
-                            <p><strong>RESULTADO:</strong> Certificación normativa aprobada sin observaciones.</p>
-                            <p class="highlight">DATO CLAVE: Garantía 18 meses por escrito.</p>
-                        </div>
-                    </div>
-                    <div class="gallery-card">
-                        <img src="image_5.png" alt="Fabricación de Alta Precisión" loading="lazy">
-                        <div class="gallery-info b2b-context">
-                            <h4>Fabricación de Alta Precisión</h4>
-                            <p><strong>SECTOR:</strong> Manufactura / Automotriz</p>
-                            <p><strong>RETO:</strong> Derrames de químicos y fluidos degradando el firme.</p>
-                            <p><strong>SOLUCIÓN:</strong> Acabado Poliuretano resistente a choque térmico/químico.</p>
-                            <p><strong>RESULTADO:</strong> Superficie blindada y segura para los operadores.</p>
-                            <p class="highlight">DATO CLAVE: Garantía 18 meses por escrito.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. ESTADÍSTICAS AMPLIADAS -->
-        <section id="experiencia">
-            <div class="glass-panel hidden">
-                <h2>Respaldo Operativo Verificable</h2>
-                <div class="stats-grid">
-                    <div class="stat-item"><h3>+24 Años</h3><p>De Experiencia</p></div>
-                    <div class="stat-item"><h3>+500</h3><p>Proyectos Ejecutados</p></div>
-                    <div class="stat-item"><h3>+800,000</h3><p>m² Recubiertos</p></div>
-                    <div class="stat-item"><h3>100%</h3><p>Fines de Semana</p></div>
-                    <div class="stat-item"><h3>18 Meses</h3><p>Garantía Escrita</p></div>
-                    <div class="stat-item"><h3>Logística</h3><p>Cobertura Nacional</p></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 8. SOCIOS Y PRUEBA SOCIAL -->
-        <section id="logos">
-            <div class="glass-panel hidden">
-                <h2>Socios Estratégicos</h2>
-                <div class="logo-grid">
-                    <img src="Mercedes.png" alt="Mercedes-Benz" loading="lazy">
-                    <img src="Mazda.png" alt="Mazda" loading="lazy">
-                    <img src="Coca.png" alt="Coca-Cola FEMSA" loading="lazy">
-                    <img src="Honda.png" alt="Honda" loading="lazy">
-                    <img src="Comex.png" alt="Comex" loading="lazy">
-                    <img src="Alpura.png" alt="Alpura" loading="lazy">
-                    <img src="Novartis.png" alt="Novartis" loading="lazy">
-                    <img src="Banorte.png" alt="Banorte" loading="lazy">
-                    <img src="Azteca.png" alt="TV Azteca" loading="lazy">
-                    <img src="Accel.png" alt="Accel" loading="lazy">
-                </div>
-                <p class="social-proof">"24 años de relaciones continuas con líderes industriales en México."</p>
-            </div>
-        </section>
-
-        <!-- 9. DESCARGA DE BROCHURE (Bypass Gratuito con JS) -->
-        <section id="brochure">
-            <div class="glass-panel hidden" style="max-width: 650px; margin: 0 auto; padding: 3rem 2rem;">
-                <h2><i class="fa-solid fa-file-pdf"></i> Catálogo Técnico</h2>
-                <p>Descargue nuestro catálogo corporativo completo con especificaciones técnicas de todos los sistemas ALTEK.</p>
+        <!-- 5. FAQ (Crucial para SEO de IA) -->
+        <section id="faq" class="min-h-screen flex items-center justify-center p-6 md:p-12">
+            <div class="glass-panel fade-in-section text-left">
+                <h2 class="text-3xl font-bold text-brand-cyan mb-8 text-center">Preguntas Frecuentes de Gerencias</h2>
                 
-                <form id="form-catalogo" action="https://formspree.io/f/mzdlwjoz" method="POST" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 1.5rem; justify-content: center;">
-                    <input type="email" name="correo_prospecto" placeholder="Su correo corporativo" required style="flex: 1; min-width: 250px; margin-bottom: 0;">
-                    <button type="submit" id="btn-catalogo" class="btn-glow" style="margin: 0; border-radius: 8px; padding: 1rem 1.5rem;">Descargar PDF</button>
-                </form>
-                
-                <!-- Mensaje de éxito invisible hasta que se envíe -->
-                <p id="status-catalogo" style="display: none; margin-top: 1rem; color: var(--wp-color); font-weight: bold;"></p>
+                <div class="space-y-6 max-w-4xl mx-auto">
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Cuánto tiempo toma la instalación para evitar paros operativos?</h3>
+                        <p class="text-slate-300">Planificamos la ejecución adaptándonos a los tiempos y horarios que más le convengan a su planta (incluyendo fines de semana o paros programados), garantizando el menor impacto en su producción.</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Qué tipo de garantía ofrecen en sus sistemas poliméricos?</h3>
+                        <p class="text-slate-300">Entregamos una garantía de 18 meses documentada por escrito que protege su inversión industrial contra cualquier desprendimiento prematuro del material.</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Sus recubrimientos cumplen con las auditorías de sanidad?</h3>
+                        <p class="text-slate-300">Sí, instalamos sistemas de Grado Alimenticio totalmente asépticos, monolíticos y sin juntas. Están diseñados para cumplir con la NOM-251 y aprobar auditorías de COFEPRIS y FDA.</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Tienen cobertura de aplicación fuera de la Ciudad de México?</h3>
+                        <p class="text-slate-300">Sí. Contamos con capacidad logística y operativa para realizar diagnósticos físicos e instalar nuestros recubrimientos en zonas industriales a nivel nacional.</p>
+                    </div>
+                </div>
             </div>
-        </section>               
+        </section>
 
-        <!-- 10. CONTACTO B2B (Formulario principal) -->
-        <section id="contacto">
-            <div class="glass-panel hidden">
-                <h2>Solicite un Diagnóstico Técnico Hoy</h2>
-                <p>Evalúe el estado de sus firmes industriales. Llene el formulario y un especialista lo contactará para coordinar la visita.</p>
+        <!-- 6. CONTACTO INTEGRADO -->
+        <section id="contacto" class="min-h-screen flex items-center justify-center p-6 md:p-12">
+            <div class="glass-panel fade-in-section">
+                <h2 class="text-3xl font-bold text-brand-cyan mb-4">Solicite un Diagnóstico Técnico Hoy</h2>
+                <p class="text-slate-300 mb-8 max-w-2xl mx-auto">Llene el formulario y un especialista lo contactará para coordinar la visita a su planta.</p>
                 
-                <!-- Formulario Formspree -->
-                <form class="b2b-form" action="https://formspree.io/f/xojobwwl" method="POST">
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left bg-black/20 p-8 rounded-2xl border border-white/10" action="https://formspree.io/f/xojobwwl" method="POST">
+                    <!-- Configuración para asegurar que llegue a Zoho indirectamente si Formspree se actualiza -->
+                    <input type="hidden" name="_replyto" value="alfredo.aguilar@altekrecubrimientos.com">
+                    
                     <div>
-                        <label>Nombre Completo</label>
-                        <input type="text" name="nombre" required>
+                        <label class="block text-sm font-bold text-white mb-1">Nombre Completo</label>
+                        <input type="text" name="nombre" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-brand-cyan focus:bg-brand-cyan/5 transition-colors">
                     </div>
                     <div>
-                        <label>Empresa</label>
-                        <input type="text" name="empresa" required>
+                        <label class="block text-sm font-bold text-white mb-1">Empresa</label>
+                        <input type="text" name="empresa" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-brand-cyan focus:bg-brand-cyan/5 transition-colors">
                     </div>
                     <div>
-                        <label>Teléfono (WhatsApp)</label>
-                        <input type="tel" name="telefono" required>
+                        <label class="block text-sm font-bold text-white mb-1">Teléfono (WhatsApp)</label>
+                        <input type="tel" name="telefono" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-brand-cyan focus:bg-brand-cyan/5 transition-colors">
                     </div>
                     <div>
-                        <label>Tipo de Necesidad</label>
-                        <select name="proyecto" required>
+                        <label class="block text-sm font-bold text-white mb-1">Tipo de Necesidad</label>
+                        <select name="proyecto" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-slate-800 focus:outline-none focus:border-brand-cyan transition-colors">
                             <option value="" disabled selected>Seleccione una opción...</option>
                             <option value="nuevo">Recubrimiento Nuevo</option>
-                            <option value="rehab">Rehabilitación / Baches / Grietas</option>
-                            <option value="aislamiento">Aislamiento Térmico (Poliuretano)</option>
+                            <option value="rehab">Rehabilitación / Baches</option>
+                            <option value="aislamiento">Aislamiento Térmico</option>
                         </select>
                     </div>
-                    <div class="full-width">
-                        <label>Breve descripción del reto o metraje aproximado</label>
-                        <textarea name="mensaje" rows="3" required></textarea>
+                    <div class="col-span-1 md:col-span-2">
+                        <label class="block text-sm font-bold text-white mb-1">Descripción del reto o m² aproximados</label>
+                        <textarea name="mensaje" rows="3" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-brand-cyan focus:bg-brand-cyan/5 transition-colors"></textarea>
                     </div>
-                    <button type="submit" class="form-btn">Enviar Solicitud de Diagnóstico</button>
+                    <div class="col-span-1 md:col-span-2 mt-4">
+                        <button type="submit" class="w-full p-4 bg-brand-cyan text-brand-bg font-extrabold text-lg uppercase rounded-lg hover:shadow-[0_0_20px_rgba(0,212,255,0.5)] hover:-translate-y-1 transition-all">Enviar Solicitud</button>
+                    </div>
                 </form>
-
-                <div class="btn-container" style="margin-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2.5rem;">
-                    <a href="https://calendar.app.google/xdpRTJTifcgFxmqK7" target="_blank" rel="noopener noreferrer" class="btn-outline btn-calendly">
-                        <i class="fa-regular fa-calendar-check"></i> Agende directamente en nuestro calendario
-                    </a>
-                </div>
             </div>
         </section>
 
     </div>
 
-    <!-- WHATSAPP FLOTANTE GLOBAL (Desktop) -->
-    <a href="https://wa.me/525535820734?text=Hola,%20me%20gustaría%20agendar%20un%20diagnóstico%20técnico%20gratuito." class="floating-wa" target="_blank" rel="noopener noreferrer">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <!-- DATOS ESTRUCTURADOS SCHEMA.ORG (El lenguaje de IA y Google) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "name": "ALTEK Soluciones Integrales",
+          "image": "https://www.altekrecubrimientos.com/image_4.png",
+          "email": "alfredo.aguilar@altekrecubrimientos.com",
+          "telephone": "+525535820734",
+          "url": "https://www.altekrecubrimientos.com",
+          "areaServed": "MX",
+          "description": "Expertos en aplicación de pisos epóxicos industriales, recubrimientos de grado alimenticio y poliuretano espreado a nivel nacional.",
+          "priceRange": "$$"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Cuánto tiempo toma la instalación para evitar paros operativos?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Planificamos la ejecución adaptándonos a los tiempos y horarios que más le convengan a su planta, garantizando el menor impacto en su producción."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Qué tipo de garantía ofrecen en sus sistemas poliméricos?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Entregamos una garantía de 18 meses por escrito que protege su inversión contra cualquier desprendimiento prematuro del material."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Sus recubrimientos cumplen con las auditorías de sanidad?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sí, instalamos sistemas de Grado Alimenticio asépticos y sin juntas que cumplen con la NOM-251 y aprueban auditorías de COFEPRIS y FDA."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Tienen cobertura de aplicación fuera de la Ciudad de México?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Contamos con capacidad logística y operativa para instalar nuestros recubrimientos industriales en toda la República Mexicana."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
-    <!-- STICKY FOOTER PARA MÓVILES (Con Calendly y WA) -->
-    <div class="sticky-mobile">
-        <a href="https://calendar.app.google/xdpRTJTifcgFxmqK7" target="_blank" rel="noopener noreferrer" class="btn-sticky-cal"><i class="fa-regular fa-calendar-check"></i> Agendar Diagnóstico</a>
-        <a href="https://wa.me/525535820734?text=Hola,%20me%20gustaría%20agendar%20un%20diagnóstico%20técnico%20gratuito." target="_blank" rel="noopener noreferrer" class="btn-sticky-wa"><i class="fa-brands fa-whatsapp"></i> Hablar Hoy</a>
-    </div>
-
-    <!-- SCRIPTS -->
+    <!-- SCRIPT PARTICULAS Y ANIMACIONES -->
     <script>
-        // Lógica de partículas (sin cambios)
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
-        const particleCount = 75; 
-        const connectionDistance = 110; 
-
-        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+        
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resize);
+        resize();
 
         class Particle {
-            constructor() { this.reset(); }
-            reset() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; this.radius = Math.random() * 2 + 1; }
-            update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width) this.vx *= -1; if (this.y < 0 || this.y > canvas.height) this.vy *= -1; }
-            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fillStyle = 'rgba(0, 243, 255, 0.4)'; ctx.fill(); }
+            constructor() { 
+                this.x = Math.random() * canvas.width; 
+                this.y = Math.random() * canvas.height; 
+                this.vx = (Math.random() - 0.5) * 0.4; 
+                this.vy = (Math.random() - 0.5) * 0.4; 
+                this.radius = Math.random() * 2 + 1; 
+            }
+            update() { 
+                this.x += this.vx; this.y += this.vy; 
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1; 
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1; 
+            }
+            draw() { 
+                ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); 
+                ctx.fillStyle = 'rgba(0, 212, 255, 0.4)'; ctx.fill(); 
+            }
         }
 
-        function initParticles() { particles = []; for (let i = 0; i < particleCount; i++) { particles.push(new Particle()); } }
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-	    let radioMaximo = Math.max(canvas.width, canvas.height);
-            // Dentro de tu función animateParticles, ajusta el gradiente:
-	    let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 50, canvas.width/2, canvas.height/2, radioMaximo);
-	    gradient.addColorStop(0, '#1E3A8A'); /* Un azul mucho más eléctrico y claro en el centro */
-	    gradient.addColorStop(1, '#0F172A'); /* El fondo de la página */
-	    ctx.fillStyle = gradient;
-	    ctx.fillRect(0, 0, canvas.width, canvas.height);       
+        for (let i = 0; i < 70; i++) particles.push(new Particle());
+
+        function animate() {
+            let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 50, canvas.width/2, canvas.height/2, Math.max(canvas.width, canvas.height));
+            gradient.addColorStop(0, '#0F172A');
+            gradient.addColorStop(1, '#08111F');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);       
 
             particles.forEach(p => { p.update(); p.draw(); });
+            
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x; const dy = particles[i].y - particles[j].y; const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < connectionDistance) { ctx.beginPath(); ctx.moveTo(particles[i].x, particles[i].y); ctx.lineTo(particles[j].x, particles[j].y); let alpha = (1 - (distance / connectionDistance)) * 0.18; ctx.strokeStyle = `rgba(0, 243, 255, ${alpha})`; ctx.lineWidth = 0.8; ctx.stroke(); }
+                    const dx = particles[i].x - particles[j].x; 
+                    const dy = particles[i].y - particles[j].y; 
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < 120) { 
+                        ctx.beginPath(); 
+                        ctx.moveTo(particles[i].x, particles[i].y); 
+                        ctx.lineTo(particles[j].x, particles[j].y); 
+                        ctx.strokeStyle = `rgba(0, 212, 255, ${(1 - dist/120) * 0.15})`; 
+                        ctx.stroke(); 
+                    }
                 }
             }
-            requestAnimationFrame(animateParticles);
+            requestAnimationFrame(animate);
         }
-        initParticles(); animateParticles();
+        animate();
 
-        // Intersection Observer (Aparición al hacer scroll)
+        // Scroll Observer
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('show'); } });
-        }, { threshold: 0.15 });
-        document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
-
-        // Actualización menú activo (Throttle)
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.icon-nav a');
-        let isScrolling = false;
-
-        window.addEventListener('scroll', () => {
-            if (!isScrolling) {
-                window.requestAnimationFrame(() => {
-                    let current = '';
-                    sections.forEach(section => {
-                        const sectionTop = section.offsetTop;
-                        const sectionHeight = section.clientHeight;
-                        if (scrollY >= (sectionTop - sectionHeight / 3)) { current = section.getAttribute('id'); }
-                    });
-                    navLinks.forEach(a => {
-                        a.classList.remove('active');
-                        if (a.getAttribute('href').includes(current)) { a.classList.add('active'); }
-                    });
-                    isScrolling = false;
-                });
-                isScrolling = true;
-            }
-
-	// SCRIPT PARA DESCARGA DE CATÁLOGO (Bypass Formspree)
-        var formCatalogo = document.getElementById("form-catalogo");
-        
-        async function handleSubmit(event) {
-            event.preventDefault();
-            var status = document.getElementById("status-catalogo");
-            var btn = document.getElementById("btn-catalogo");
-            var data = new FormData(event.target);
-            
-            // Cambiar el texto del botón mientras envía
-            btn.innerHTML = "Abriendo...";
-            btn.disabled = true;
-            
-            fetch(event.target.action, {
-                method: formCatalogo.method,
-                body: data,
-                headers: { 'Accept': 'application/json' }
-            }).then(response => {
-                if (response.ok) {
-                    status.innerHTML = "¡Listo! Redirigiendo al catálogo...";
-                    status.style.display = "block";
-                    formCatalogo.reset();
-                    // Redirección gratuita con código:
-                    window.location.href = "https://altekrecubrimientos-com.vercel.app/catalogo-altek.pdf";
-                } else {
-                    status.innerHTML = "Hubo un error. Intente de nuevo.";
-                    status.style.display = "block";
-                    btn.innerHTML = "Descargar PDF";
-                    btn.disabled = false;
-                }
-            }).catch(error => {
-                status.innerHTML = "Hubo un error de conexión.";
-                status.style.display = "block";
-                btn.innerHTML = "Descargar PDF";
-                btn.disabled = false;
-            });
-        }
-        if(formCatalogo) { formCatalogo.addEventListener("submit", handleSubmit); 
-	}
-        });
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
