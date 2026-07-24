@@ -43,7 +43,6 @@
                 </p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-5 gap-10">
-                    <!-- Información de Contacto Directo -->
                     <div class="md:col-span-2 space-y-6">
                         <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
                             <h3 class="text-lg font-bold text-brand-cyan mb-4">Vías Rápidas</h3>
@@ -61,10 +60,9 @@
                         </div>
                     </div>
 
-                    <!-- Formulario -->
                     <div class="md:col-span-3">
-                        <form class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left" action="https://formspree.io/f/xojobwwl" method="POST">
-                            <input type="hidden" name="_replyto" value="alfredo.aguilar@altekrecubrimientos.com">
+                        <!-- Formulario B2B Integrado con API -->
+                        <form id="altek-hubspot-form" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
                             <div class="col-span-1 md:col-span-2">
                                 <label class="block text-sm font-bold text-white mb-1">Nombre Completo</label>
                                 <input type="text" name="nombre" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-brand-cyan transition-colors">
@@ -81,10 +79,10 @@
                                 <label class="block text-sm font-bold text-white mb-1">Tipo de Necesidad</label>
                                 <select name="proyecto" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-slate-800 focus:outline-none focus:border-brand-cyan transition-colors">
                                     <option value="" disabled selected>Seleccione el servicio requerido...</option>
-                                    <option value="epoxico">Pisos Epóxicos Industriales</option>
-                                    <option value="rehabilitacion">Rehabilitación y Bacheo</option>
-                                    <option value="poliuretano">Aislamiento de Poliuretano</option>
-                                    <option value="grado_alimenticio">Piso Grado Alimenticio</option>
+                                    <option value="Pisos Epóxicos">Pisos Epóxicos Industriales</option>
+                                    <option value="Rehabilitación">Rehabilitación y Bacheo</option>
+                                    <option value="Poliuretano">Aislamiento de Poliuretano</option>
+                                    <option value="Grado Alimenticio">Piso Grado Alimenticio</option>
                                 </select>
                             </div>
                             <div class="col-span-1 md:col-span-2">
@@ -92,8 +90,10 @@
                                 <textarea name="mensaje" rows="3" required class="w-full p-3 bg-white/5 border border-white/10 rounded-lg text-white focus:outline-none focus:border-brand-cyan transition-colors"></textarea>
                             </div>
                             <div class="col-span-1 md:col-span-2 mt-2">
-                                <button type="submit" class="w-full p-4 bg-brand-orange text-white font-extrabold text-lg uppercase rounded-lg hover:shadow-[0_0_20px_rgba(245,124,0,0.5)] hover:bg-[#FF8F24] transition-all">Enviar Solicitud</button>
+                                <button id="submit-btn" type="submit" class="w-full p-4 bg-brand-orange text-white font-extrabold text-lg uppercase rounded-lg hover:shadow-[0_0_20px_rgba(245,124,0,0.5)] hover:bg-[#FF8F24] transition-all">Enviar Solicitud</button>
                             </div>
+                            <!-- Mensaje de éxito o error -->
+                            <div id="form-status" class="col-span-1 md:col-span-2 text-center font-bold text-sm hidden mt-2"></div>
                         </form>
                     </div>
                 </div>
@@ -101,7 +101,76 @@
         </section>
     </div>
 
+    <!-- SCRIPT DE INTEGRACIÓN HUBSPOT API -->
     <script>
+        document.getElementById('altek-hubspot-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // --- INSTRUCCIÓN: REEMPLAZA ESTOS DOS VALORES CON TUS IDs ---
+            const portalId = 'TU_PORTAL_ID_AQUI'; 
+            const formId = 'TU_FORM_ID_AQUI';
+            // ------------------------------------------------------------
+
+            const btn = document.getElementById('submit-btn');
+            const statusDiv = document.getElementById('form-status');
+            
+            btn.innerHTML = 'Procesando...';
+            btn.disabled = true;
+
+            const nombre = document.querySelector('input[name="nombre"]').value;
+            const empresa = document.querySelector('input[name="empresa"]').value;
+            const telefono = document.querySelector('input[name="telefono"]').value;
+            const proyecto = document.querySelector('select[name="proyecto"]').value;
+            const mensaje = document.querySelector('textarea[name="mensaje"]').value;
+
+            // Combinamos el servicio de interés con el mensaje para no tener que crear un campo personalizado en HubSpot y asegurar que todo entre en "message".
+            const mensajeCompleto = `[Servicio de Interés: ${proyecto}] | Detalles del cliente: ${mensaje}`;
+
+            const data = {
+                fields: [
+                    { name: 'firstname', value: nombre },
+                    { name: 'company', value: empresa },
+                    { name: 'phone', value: telefono },
+                    { name: 'message', value: mensajeCompleto }
+                ],
+                context: {
+                    pageUri: window.location.href,
+                    pageName: document.title
+                }
+            };
+
+            const url = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
+
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Solicitud Enviada';
+                    btn.classList.replace('bg-brand-orange', 'bg-green-500');
+                    btn.classList.replace('hover:bg-[#FF8F24]', 'hover:bg-green-600');
+                    e.target.reset();
+                } else {
+                    statusDiv.innerHTML = 'Hubo un error de conexión con el servidor. Intente más tarde.';
+                    statusDiv.classList.add('text-red-500');
+                    statusDiv.classList.remove('hidden');
+                    btn.innerHTML = 'Enviar Solicitud';
+                    btn.disabled = false;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                statusDiv.innerHTML = 'Error de red. Revise su conexión.';
+                statusDiv.classList.add('text-red-500');
+                statusDiv.classList.remove('hidden');
+                btn.innerHTML = 'Enviar Solicitud';
+                btn.disabled = false;
+            });
+        });
+
+        // Partículas (Background)
         const canvas=document.getElementById('bg-canvas'),ctx=canvas.getContext('2d');let particles=[];
         window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
         canvas.width=window.innerWidth;canvas.height=window.innerHeight;
