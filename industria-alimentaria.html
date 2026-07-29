@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pisos Grado Alimenticio y Poliuretano Cementicio | ALTEK</title>
+    <meta name="description" content="Sistemas de pisos epóxicos y poliuretano cementicio grado alimenticio para plantas de alimentos, bebidas y cámaras frías. Cumplimiento NOM y FDA.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { brand: { bg: '#08111F', cyan: '#00D4FF', cyanGlow: 'rgba(0, 212, 255, 0.5)', orange: '#F57C00', glass: 'rgba(16, 24, 39, 0.75)' } } }, fontFamily: { sans: ['Segoe UI', 'sans-serif'] } } }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel { @apply bg-brand-glass backdrop-blur-md border border-brand-cyanGlow rounded-3xl p-8 md:p-12 w-full max-w-5xl mx-auto shadow-[0_20px_50px_rgba(0,0,0,0.6)]; }
+            .nav-link { @apply flex flex-col items-center gap-1 text-slate-300 hover:text-brand-cyan transition-all text-[0.7rem] font-medium; }
+            .nav-icon { @apply w-9 h-9 flex items-center justify-center rounded-full bg-white/5 border border-white/10 text-lg transition-all; }
+            .nav-link:hover .nav-icon, .nav-link.active .nav-icon { @apply shadow-[0_0_15px_#00D4FF] border-brand-cyan -translate-y-1 scale-110 text-brand-cyan; }
+            .fade-in-section { @apply opacity-0 translate-y-10 blur-sm transition-all duration-700 ease-out; }
+            .fade-in-section.is-visible { @apply opacity-100 translate-y-0 blur-none; }
+            .btn-orange { @apply inline-flex items-center justify-center gap-2 px-8 py-4 text-white font-extrabold uppercase tracking-wide bg-brand-orange rounded-full transition-all hover:bg-[#FF8F24] hover:scale-105 hover:shadow-[0_0_25px_rgba(245,124,0,0.6)]; }
+        }
+    </style>
+</head>
+<body class="bg-brand-bg text-white overflow-x-hidden pt-24 pb-20">
+
+    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"></canvas>
+
+    <div class="relative z-10">
+
+        <!-- NAVEGACIÓN SUPERIOR -->
+        <nav class="fixed top-0 left-0 w-full flex justify-start md:justify-center gap-2 md:gap-10 z-50 p-3 bg-brand-bg/95 backdrop-blur-md border-b border-white/10 overflow-x-auto no-scrollbar">
+            <a href="/" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-house"></i></div><span class="hidden md:block">Inicio</span></a>
+            <a href="/nosotros" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-shield-halved"></i></div><span class="hidden md:block">Nosotros</span></a>
+            <a href="/servicios" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-layer-group"></i></div><span class="hidden md:block">Servicios</span></a>
+            <a href="/sectores" class="nav-link active"><div class="nav-icon"><i class="fa-solid fa-industry"></i></div><span class="hidden md:block">Sectores</span></a>
+            <a href="/contacto" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-satellite-dish"></i></div><span class="hidden md:block">Contacto</span></a>
+        </nav>
+
+        <!-- BREADCRUMBS -->
+        <div class="max-w-5xl mx-auto px-6 pt-4 pb-2 text-sm text-slate-400 fade-in-section">
+            <a href="/" class="hover:text-brand-cyan">Inicio</a> &gt; 
+            <a href="/sectores" class="hover:text-brand-cyan">Sectores</a> &gt; 
+            <span class="text-brand-cyan font-bold">Industria Alimentaria</span>
+        </div>
+
+        <!-- HERO SECTOR ALIMENTARIO -->
+        <section class="py-6 px-6 md:px-12 flex justify-center">
+            <div class="glass-panel fade-in-section">
+                <div class="inline-block bg-brand-cyan/20 border border-brand-cyan/50 text-brand-cyan font-bold px-4 py-1 rounded-full text-sm mb-4">
+                    <i class="fa-solid fa-shield-virus mr-2"></i> Inocuidad y Cumplimiento Normativo
+                </div>
+                <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-6 text-center">
+                    Pisos Grado Alimenticio y <span class="text-brand-cyan">Poliuretano Cementicio</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-300 max-w-4xl mx-auto font-medium text-center mb-8">
+                    Sistemas monolíticos de alta asepsia diseñados para resistir choques térmicos severos, ácidos orgánicos y limpiezas con vapor a presión en plantas procesadoras de alimentos, bebidas, rastros y cámaras de refrigeración.
+                </p>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mb-10 border-y border-white/10 py-6">
+                    <div><i class="fa-solid fa-temperature-high text-2xl text-brand-cyan mb-2"></i><p class="text-sm font-bold">Choque Térmico 120°C</p></div>
+                    <div><i class="fa-solid fa-bacteria text-2xl text-brand-cyan mb-2"></i><p class="text-sm font-bold">Cero Proliferación Bacteriana</p></div>
+                    <div><i class="fa-solid fa-clipboard-check text-2xl text-brand-cyan mb-2"></i><p class="text-sm font-bold">Cumplimiento NOM y FDA</p></div>
+                    <div><i class="fa-solid fa-shield-halved text-2xl text-brand-cyan mb-2"></i><p class="text-sm font-bold">Garantía Escrita 18 Meses</p></div>
+                </div>
+
+                <div class="text-center">
+                    <a href="/contacto" class="btn-orange">Solicitar Diagnóstico Sanitario</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CARACTERÍSTICAS TÉCNICAS ALIMENTARIAS -->
+        <section class="py-12 px-6 md:px-12 flex justify-center">
+            <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="fade-in-section flex flex-col justify-center">
+                    <h2 class="text-2xl font-bold text-brand-cyan mb-6">¿Por qué el concreto común falla en la industria de alimentos?</h2>
+                    <p class="text-slate-300 mb-4 leading-relaxed">
+                        Los pisos tradicionales de concreto son porosos. Absorben jugos de carne, azúcares, sangre y grasas, convirtiéndose en un caldo de cultivo para bacterias y hongos imposibles de erradicar con químicos comunes.
+                    </p>
+                    <p class="text-slate-300 leading-relaxed">
+                        Además, el contraste entre el agua hirviendo de limpieza (vapor) y el frío de las cámaras frigoríficas fractura cualquier epóxico convencional. Nuestros sistemas de <strong>Poliuretano Cementicio ALTEK</strong> poseen un coeficiente de dilatación térmica idéntico al del concreto, evitando desprendimientos y agrietamientos definitivos.
+                    </p>
+                </div>
+                
+                <div class="bg-slate-900/80 rounded-2xl border border-brand-cyanGlow/40 p-8 flex flex-col justify-center fade-in-section shadow-xl space-y-4">
+                    <div class="flex items-start gap-4">
+                        <i class="fa-solid fa-circle-check text-brand-cyan text-xl mt-1"></i>
+                        <div><strong class="text-white block">Curvas Sanitarias Integrales:</strong> Evitamos ángulos rectos entre piso y muro donde se acumula humedad y materia orgánica.</div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <i class="fa-solid fa-circle-check text-brand-cyan text-xl mt-1"></i>
+                        <div><strong class="text-white block">Acabado Antiderrapante Certificado:</strong> Superficies seguras incluso ante derrames constantes de aceites vegetales o agua jabonosa.</div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <i class="fa-solid fa-circle-check text-brand-cyan text-xl mt-1"></i>
+                        <div><strong class="text-white block">Cero Olores y Compuestos Tóxicos:</strong> Aplicación segura sin emisiones volátiles agresivas, ideal para áreas de producción activa.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN FAQ ALIMENTARIA (SCHEMA) -->
+        <section class="py-12 px-6 md:px-12 flex justify-center">
+            <div class="glass-panel fade-in-section text-left">
+                <h2 class="text-3xl font-bold text-brand-cyan mb-8 text-center">Preguntas Frecuentes: Pisos Grado Alimenticio</h2>
+                
+                <div class="space-y-6 max-w-4xl mx-auto">
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Qué diferencia hay entre piso epóxico y poliuretano cementicio para alimentos?</h3>
+                        <p class="text-slate-300">El epóxico es excelente para áreas secas, pasillos y bodegas de producto terminado. Sin embargo, en zonas de cocimiento, lavado continuo y cámaras de congelación con choque térmico por vapor, el poliuretano cementicio es el único material que soporta temperaturas de hasta 120°C sin despegarse.</p>
+                    </div>
+                    <div class="bg-slate-900/50 p-6 rounded-xl border border-white/5">
+                        <h3 class="text-xl font-bold text-white mb-2">¿Sus recubrimientos ayudan a pasar auditorías de COFEPRIS y FDA?</h3>
+                        <p class="text-slate-300">Sí. Diseñamos nuestras superficies cumpliendo rigurosamente con las normativas de inocuidad alimentaria (NOM-251 y estándares FDA), eliminando juntas porosas y facilitando protocolos de lavado rápido.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FOOTER UNIVERSAL B2B -->
+    <footer class="bg-brand-bg border-t border-white/10 pt-16 pb-12 px-6 md:px-12 text-slate-400 text-sm relative z-10">
+        <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+            <div>
+                <h4 class="text-white font-bold text-base mb-4">ALTEK Recubrimientos</h4>
+                <p class="text-xs leading-relaxed mb-4">Fabricantes y aplicadores directos de sistemas poliméricos industriales y pisos epóxicos de alta resistencia con garantía directa de 18 meses.</p>
+                <p class="text-xs text-brand-cyan font-bold"><i class="fa-solid fa-shield-halved mr-1"></i> Cobertura Nacional Certificada</p>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-base mb-4">Plazas Regionales</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="/pisos-epoxicos-cdmx-edomex.html" class="hover:text-brand-cyan transition-colors">CDMX y Estado de México</a></li>
+                    <li><a href="/pisos-epoxicos-queretaro.html" class="hover:text-brand-cyan transition-colors">Querétaro</a></li>
+                    <li><a href="/pisos-epoxicos-monterrey.html" class="hover:text-brand-cyan transition-colors">Monterrey</a></li>
+                    <li><a href="/pisos-epoxicos-guadalajara.html" class="hover:text-brand-cyan transition-colors">Guadalajara</a></li>
+                    <li><a href="/pisos-epoxicos-bajio.html" class="hover:text-brand-cyan transition-colors">Corredor del Bajío</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-base mb-4">Navegación</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="/" class="hover:text-brand-cyan transition-colors">Inicio</a></li>
+                    <li><a href="/nosotros" class="hover:text-brand-cyan transition-colors">Nosotros</a></li>
+                    <li><a href="/servicios" class="hover:text-brand-cyan transition-colors">Servicios</a></li>
+                    <li><a href="/sectores" class="hover:text-brand-cyan transition-colors">Sectores Industriales</a></li>
+                    <li><a href="/contacto" class="hover:text-brand-cyan transition-colors">Contacto y Diagnóstico</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-bold text-base mb-4">Canal Comercial</h4>
+                <p class="text-xs mb-2"><i class="fa-solid fa-phone text-brand-cyan mr-2"></i> +52 55 3582 0734</p>
+                <p class="text-xs mb-4"><i class="fa-solid fa-envelope text-brand-cyan mr-2"></i> alfredo.aguilar@altekrecubrimientos.com</p>
+                <a href="/contacto" class="inline-block px-4 py-2 bg-brand-orange text-white text-xs font-bold rounded-lg uppercase hover:bg-[#FF8F24] transition-all shadow-[0_0_15px_rgba(245,124,0,0.4)]">Agendar Visita Técnica</a>
+            </div>
+        </div>
+        <div class="max-w-5xl mx-auto border-t border-white/5 pt-6 text-center text-xs text-slate-500">
+            &copy; 2026 ALTEK Soluciones Integrales. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <!-- DATOS ESTRUCTURADOS SCHEMA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "name": "Pisos Grado Alimenticio y Poliuretano Cementicio | ALTEK",
+          "description": "Sistemas de pisos grado alimenticio para plantas procesadoras y cumplimiento FDA."
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué diferencia hay entre piso epóxico y poliuretano cementicio para alimentos?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El poliuretano cementicio resiste choque térmico de hasta 120°C por vapor, ideal para zonas de cocimiento y lavado continuo."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Sus recubrimientos ayudan a pasar auditorías de COFEPRIS y FDA?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sí, cumplen con NOM-251 y estándares internacionales de inocuidad."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+        canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+        class Particle {
+            constructor() { this.x = Math.random() * canvas.width; this.y = Math.random() * canvas.height; this.vx = (Math.random() - 0.5) * 0.4; this.vy = (Math.random() - 0.5) * 0.4; this.radius = Math.random() * 2 + 1; }
+            update() { this.x += this.vx; this.y += this.vy; if (this.x < 0 || this.x > canvas.width) this.vx *= -1; if (this.y < 0 || this.y > canvas.height) this.vy *= -1; }
+            draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); ctx.fillStyle = 'rgba(0, 212, 255, 0.4)'; ctx.fill(); }
+        }
+        for (let i = 0; i < 70; i++) particles.push(new Particle());
+        function animate() {
+            let gradient = ctx.createRadialGradient(canvas.width/2, canvas.height/2, 50, canvas.width/2, canvas.height/2, Math.max(canvas.width, canvas.height));
+            gradient.addColorStop(0, '#0F172A'); gradient.addColorStop(1, '#08111F');
+            ctx.fillStyle = gradient; ctx.fillRect(0, 0, canvas.width, canvas.height);       
+            particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animate);
+        }
+        animate();
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
