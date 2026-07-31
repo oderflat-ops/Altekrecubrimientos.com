@@ -78,16 +78,23 @@
 
     <div class="relative z-10">
 
-       <!-- NAVEGACIÓN SUPERIOR (Rutas Multi-página) -->
-        <nav class="fixed top-0 left-0 w-full flex justify-start md:justify-center gap-2 md:gap-10 z-50 p-3 bg-brand-bg/95 backdrop-blur-md border-b border-white/10 overflow-x-auto no-scrollbar">
-            <a href="/" class="nav-link active"><div class="nav-icon"><i class="fa-solid fa-house"></i></div><span class="hidden md:block">Inicio</span></a>
-            <a href="/nosotros" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-shield-halved"></i></div><span class="hidden md:block">Nosotros</span></a>
-            <a href="/servicios" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-layer-group"></i></div><span class="hidden md:block">Servicios</span></a>
-            <a href="/sectores" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-industry"></i></div><span class="hidden md:block">Sectores</span></a>
-            <a href="/proceso" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-gears"></i></div><span class="hidden md:block">Proceso</span></a>
-            <a href="/proyectos" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-camera-retro"></i></div><span class="hidden md:block">Proyectos</span></a>
-            <a href="/contacto" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-satellite-dish"></i></div><span class="hidden md:block">Contacto</span></a>
-        </nav>
+  <!-- NAVEGACIÓN SUPERIOR GLOBAL (Corregida) -->
+	<nav class="fixed top-0 left-0 w-full flex justify-start md:justify-center gap-2 md:gap-10 z-50 p-3 bg-brand-bg/95 backdrop-blur-md border-b border-white/10 overflow-x-auto no-scrollbar">
+    
+    <!-- Enlaces a páginas independientes -->
+    <a href="index.html" class="nav-link active"><div class="nav-icon"><i class="fa-solid fa-house"></i></div><span class="hidden md:block">Inicio</span></a>
+    <a href="nosotros.html" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-shield-halved"></i></div><span class="hidden md:block">Nosotros</span></a>
+    <a href="servicios.html" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-layer-group"></i></div><span class="hidden md:block">Servicios</span></a>
+    <a href="sectores.html" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-industry"></i></div><span class="hidden md:block">Sectores</span></a>
+    
+    <!-- Enlaces con ancla hacia secciones de la página principal -->
+    <a href="index.html#proceso" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-gears"></i></div><span class="hidden md:block">Proceso</span></a>
+    <a href="index.html#proyectos" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-camera-retro"></i></div><span class="hidden md:block">Proyectos</span></a>
+    <a href="index.html#cobertura" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-map-location-dot"></i></div><span class="hidden md:block">Cobertura</span></a>
+    
+    <!-- Botón de conversión -->
+    <a href="contacto.html" class="nav-link"><div class="nav-icon"><i class="fa-solid fa-satellite-dish"></i></div><span class="hidden md:block">Contacto</span></a>
+</nav>
 
        <!-- 1. HERO (Optimizada para SEO Directo) -->
        <section id="inicio" class="min-h-screen flex items-center justify-center p-6 md:p-12">
@@ -310,7 +317,7 @@
         </section>
 
 	    <!-- SECCIÓN DE COBERTURA NACIONAL (ENLAZADO INTERNO SEO) -->
-        <section class="py-16 px-6 md:px-12 flex justify-center relative z-10">
+        <section id="cobertura" class="py-16 px-6 md:px-12 flex justify-center relative z-10">
             <div class="max-w-5xl w-full text-center fade-in-section">
                 <div class="inline-block bg-brand-cyan/20 border border-brand-cyan/50 text-brand-cyan font-bold px-4 py-1 rounded-full text-sm mb-4">
                     <i class="fa-solid fa-map-location-dot mr-2"></i> Cobertura y Logística Local
